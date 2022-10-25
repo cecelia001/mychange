@@ -10,8 +10,6 @@ const db = require("../model/helper")
     })
     .catch(err=> res.status(500).send(err));
     });
-    
-  module.exports = router;
   
 
   //get all budget data from 1 user
@@ -76,4 +74,7 @@ router.post("/", async function(req, res) {
       res.status(500).send({ error: err.message });
     }
   });
+
+
+  module.exports = router;
   
