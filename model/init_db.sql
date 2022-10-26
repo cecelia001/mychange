@@ -37,6 +37,7 @@ INSERT INTO budget (categoryid, amount, userid)
 
 DROP TABLE IF EXISTS expenses;
 CREATE TABLE expenses ( 
+    expensesid INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     categoryid VARCHAR(100),
     amount VARCHAR(100),
     themonth VARCHAR(100),

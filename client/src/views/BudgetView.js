@@ -5,7 +5,7 @@ import AddBudget from "../components/AddBudget";
 function BudgetView(props) {
     return (
         <div className="BudgetView">
-       <AddBudget newBudgetCb={props.newBudget}/>
+       <AddBudget newBudgetCb={props.newBudgetCb}/>
         </div>
     );
 }

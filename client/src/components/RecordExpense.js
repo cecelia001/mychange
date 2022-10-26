@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./RecordExpense.css";
 
 const BLANK_FORM= {
     amount: "",
-    categoryid: ""
+    category: 'Selected value',
+    themonth: "" ,
+    theyear: "",
 };
 
 function RecordExpense(props){
@@ -29,11 +31,12 @@ function RecordExpense(props){
                 Amount
                 <input
                 type= "number"
-                name="username"
-                value={formData.username}
+                name="amount"
+                value={formData.amount}
                 onChange={handleChange}
                 />
             </label>
+
 
             <label>
                 Category
@@ -48,18 +51,73 @@ function RecordExpense(props){
                 <option value="5"> Other</option>
                 <option value="6"> Savings</option>
                 <option value="7"> Emergency</option>
-                <option selected value>
+                <option selected value="Select">
                     {" "}
                     Select{" "}
                 </option>
                 </select>
             </label>
+
+            <label>
+                Month
+                <input
+                type="text"
+                name="themonth"
+                value={formData.themonth}
+                onChange={handleChange}
+                />
+            </label>
+
+            <label>
+                Year
+                <input
+                type= "number"
+                name="theyear"
+                value={formData.theyear}
+                onChange={handleChange}
+                />
+            </label>
+
+
             <button type="submit">Submit</button>
 
             <h3>
                 Past Expenses
-            </h3>
+                
+            { props.expenses.length===0  ? <div> Loading...</div> :  
+           
+           <div> {props.expenses.map(e => (
+            <li key={e.expensesid} >
 
+             <table className ="list">
+                <thead>
+                    <tr>
+                        <th> Amount </th>
+                        <th> Category </th>
+                        <th> Month </th>
+                        <th> Year </th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                        
+                        <td>{`$ ${e.amount}`} </td>
+                       
+                        <td>{e.categoryid}</td> 
+                        
+                        <td>{e.themonth}</td> 
+                       
+                        <td>{e.theyear}</td>
+                        
+                        </tbody>                 
+            </table>
+            </li>
+            ))}
+            </div>
+        }
+    
+            </h3>
 
         </form>
     )
