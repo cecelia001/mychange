@@ -4,9 +4,8 @@ import React from 'react';
 function HomeView() {
     return (
         <div className="HomeView">
-            <h2>Change your habits, control your change!</h2>
-            {/* <button type="submit">Login</button>
-            <button type="submit">Create Account</button> //this should go in component instead?*/}
+            <h2>Overview</h2>
+            <h3> Show pie chart, link to budget, link to expenses</h3>
         </div>
     );
 }

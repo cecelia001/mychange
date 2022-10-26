@@ -1,0 +1,19 @@
+input {
+    display: inline-block;
+    margin: auto;
+    width: 100px;
+    height: 20px;
+
+}
+
+li {
+    list-style: none;
+}
+
+label{
+    display: inline-block;
+    text-align: right;
+    width: 300px;
+    padding: 10px;
+    gap: 15px;
+}

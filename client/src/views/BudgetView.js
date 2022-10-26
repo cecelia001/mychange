@@ -1,10 +1,11 @@
 import React from 'react';
+import AddBudget from "../components/AddBudget";
 
 
 function BudgetView(props) {
     return (
         <div className="BudgetView">
-            <h2>Set your budgets!</h2>
+       <AddBudget newBudgetCb={props.newBudget}/>
         </div>
     );
 }

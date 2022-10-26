@@ -30,4 +30,26 @@ router.get("/:id", async function (req, res) {
   }
   });
   
+
+  //new user if have time for this featurea
+  // router.post("/", async function(req, res) {
+  //   let { username, password, income } = req.body;
+  
+  //   let sql = `
+  //     INSERT INTO users (username, pswd, income)
+  //     VALUES ('${username}', '${password}', ${income})
+  //     `;
+  
+  //   try {
+  //     await db(sql); 
+  //     let result = await db(`SELECT * FROM users`);
+  //     res.status(201).send(result.data);
+  //   } catch (err) {
+  //     res.status(500).send({ error: err.message });
+  //   }
+  // });
+
+
+
+
   module.exports = router;

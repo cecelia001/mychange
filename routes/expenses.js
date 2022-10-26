@@ -47,7 +47,23 @@ router.get("/:id/:month/", async function (req, res) {
     }
     });
 
+//POST new expense  FIX THIS!!!!!!!!!!!!!!!!!!!!! 
+router.post("/", async function(req, res) {
+  let { amount1, amount2, amount3, amount4, amount5, amount6, amount7} = req.body;
 
+  let sql = `
+    INSERT INTO expenses (categoryid, amount, userid)
+    VALUES (1, ${amount1}, 1), (2, ${amount2}, 1), (3, ${amount3}, 1), (4, ${amount4}, 1), (5, ${amount5}, 1), (6, ${amount6}, 1), (7, ${amount7}, 1);
+    `;
+
+  try {
+    await db(sql); //INSERT new expense
+    let result = await db(`SELECT * FROM expenses`); //select and return updated student list
+    res.status(201).send(result.data);
+  } catch (err) {
+    res.status(500).send({ error: err.message });
+  }
+});
 
 
 
