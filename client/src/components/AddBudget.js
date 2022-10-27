@@ -24,8 +24,8 @@ function AddBudget(props){
 
     function handleChange(event){
         event.preventDefault();
-        // let { name, value } = event.target;
-        // setFormData (data => ({...data, [name]: value}));
+        let { name, value } = event.target;
+        setFormData (data => ({...data, [name]: value}));
     }
 
 
@@ -45,9 +45,11 @@ function AddBudget(props){
                 <input
                 type= "number"
                 name="rentandutilities"
-                value={formData[0].amount}
+                value={formData.rentandutilities}
                 onChange={handleChange}
                 />
+                {" "}
+                ${props.budget[0].amount}
                
             </label>
                 </li>
@@ -59,9 +61,11 @@ function AddBudget(props){
                 <input
                 type= "number"
                 name="food"
-                value={formData[1].amount}
+                value={formData.food}
                 onChange={handleChange}
                 />
+                 {" "}
+                ${props.budget[1].amount}
              
             </label>
                 </li>

@@ -83,13 +83,10 @@ function RecordExpense(props){
 
             <h3>
                 Past Expenses
-                
-            { props.expenses.length===0  ? <div> Loading...</div> :  
-           
-           <div> {props.expenses.map(e => (
-            <li key={e.expensesid} >
 
-             <table className ="list">
+
+            <div> 
+                <table className="head">
                 <thead>
                     <tr>
                         <th> Amount </th>
@@ -99,6 +96,23 @@ function RecordExpense(props){
                     
                     </tr>
                 </thead>
+                </table>
+
+            </div>
+           
+           <div> {props.expenses.map(e => (
+            <li key={e.expensesid} >
+
+             <table className ="list">
+                {/* <thead>
+                    <tr>
+                        <th> Amount </th>
+                        <th> Category </th>
+                        <th> Month </th>
+                        <th> Year </th>
+                    
+                    </tr>
+                </thead> */}
 
                 <tbody>
 
@@ -115,7 +129,6 @@ function RecordExpense(props){
             </li>
             ))}
             </div>
-        }
     
             </h3>
 
