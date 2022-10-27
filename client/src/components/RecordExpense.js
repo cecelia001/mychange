@@ -96,12 +96,12 @@ function RecordExpense(props){
                         <th> Category </th>
                         <th> Month </th>
                         <th> Year </th>
+                    
                     </tr>
                 </thead>
 
                 <tbody>
 
-                        
                         <td>{`$ ${e.amount}`} </td>
                        
                         <td>{e.categoryid}</td> 
@@ -110,7 +110,7 @@ function RecordExpense(props){
                        
                         <td>{e.theyear}</td>
                         
-                        </tbody>                 
+                </tbody>                 
             </table>
             </li>
             ))}

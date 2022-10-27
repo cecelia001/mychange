@@ -1,34 +1,42 @@
 import React, { useState } from "react";
 import "./AddBudget.css";
 
-const BLANK_FORM= {
-    amount: "",
-};
+// const RESET_FORM= {
+//     categoryid: 1,
+//     amount: "",
+//     userid: 1
+// }
+
 
 function AddBudget(props){
-    const [formData, setFormData] =useState(BLANK_FORM);
+    // {props.budget}
+
+    const [formData, setFormData] = useState(props.budget);
+    // const [resetFormData, setResetFormData] = useState(RESET_FORM)
+
+    
 
     function handleSubmit(event){
         event.preventDefault();
         props.newBudgetCb(formData);
-        // setFormData(BLANK_FORM);   don't want to reset the form
+        // setFormData(BLANK_FORM); 
     }
-
 
     function handleChange(event){
-        let { name, value } = event.target;
-        setFormData (data => ({...data, [name]: value}));
+        event.preventDefault();
+        // let { name, value } = event.target;
+        // setFormData (data => ({...data, [name]: value}));
     }
 
 
+    return (
 
-    return(
-
+        
         <div className="BudgetView">
             <h2>Set your budgets!</h2>
             <h3> Categories </h3>
-
-        <form className="AddBudget" onSubmit={handleSubmit}>
+        
+        <form className="AddBudget" onSubmit={handleSubmit} >
             <ul>
                 <li>
             <label>
@@ -36,12 +44,11 @@ function AddBudget(props){
                 {" "}
                 <input
                 type= "number"
-                name="amount1"
-                value={formData.amount1}
+                name="rentandutilities"
+                value={formData[0].amount}
                 onChange={handleChange}
                 />
-                {" "}
-                <button type="submit">Set</button>
+               
             </label>
                 </li>
 
@@ -51,12 +58,11 @@ function AddBudget(props){
                 {" "}
                 <input
                 type= "number"
-                name="amount2"
-                value={formData.amount2}
+                name="food"
+                value={formData[1].amount}
                 onChange={handleChange}
                 />
-                  {" "}
-                <button type="submit">Set</button>
+             
             </label>
                 </li>
 
@@ -66,12 +72,11 @@ function AddBudget(props){
                 {" "}
                 <input
                 type= "number"
-                name="amount3"
-                value={formData.amount3}
+                name="personal"
+                value={formData[2].amount}
                 onChange={handleChange}
                 />
-                  {" "}
-                <button type="submit">Set</button>
+              
             </label>
                 </li>
 
@@ -81,12 +86,11 @@ function AddBudget(props){
                 {" "}
                 <input
                 type= "number"
-                name="amount4"
-                value={formData.amount4}
+                name="transportation"
+                value={formData[3].amount}
                 onChange={handleChange}
                 />
-                  {" "}
-                <button type="submit">Set</button>
+
             </label>
                 </li>
 
@@ -96,12 +100,11 @@ function AddBudget(props){
                 {" "}
                 <input
                 type= "number"
-                name="amount5"
-                value={formData.amount5}
+                name="other"
+                value={formData[4].amount}
                 onChange={handleChange}
                 />
-                  {" "}
-                <button type="submit">Set</button>
+
             </label>
                 </li>
 
@@ -111,12 +114,11 @@ function AddBudget(props){
                 {" "}
                 <input
                 type= "number"
-                name="amount6"
-                value={formData.amount6}
+                name="savings"
+                value={formData[5].amount}
                 onChange={handleChange}
                 />
-                  {" "}
-                <button type="submit">Set</button>
+
             </label>
                 </li>
 
@@ -126,15 +128,17 @@ function AddBudget(props){
                 {" "}
                 <input
                 type= "number"
-                name="amount7"
-                value={formData.amount7}
+                name="emergency"
+                value={formData[6].amount}
                 onChange={handleChange}
                 />
-                  {" "}
-                <button type="submit">Set</button>
+
             </label>
                 </li>
-            </ul>
+                </ul>
+            
+                <button type="submit">Submit</button>
+
         </form>
 
         </div>

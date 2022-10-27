@@ -14,12 +14,15 @@ import Error404View from './views/Error404View';
 function App() {
 
   let [users, setUsers] = useState([]);
+  let [budget, setBudget] = useState([]);
   let [expenses, setExpenses] = useState([]);
+  const [budgetView, setBudgetView] = useState([]);
 
 
   useEffect(() => {
     getUsers();
     getExpenses();
+    getBudget();
   }, []);
 
   async function getUsers() {
@@ -36,30 +39,122 @@ function App() {
     }
   } 
 
-//New User (POST new budget)
-  async function newBudget(amount){
-  
-        let options= {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(amount)
-    };
-
+//GET Budget obj
+  async function getBudget() {
     try {
-      let response = await fetch("/budget", options); // do POST
+      let response = await fetch("budget/1");
       if (response.ok) {
-        let data = await response.json();    //awaiting new data, if found post
-        setUsers(data);
+        let data = await response.json();
+        setBudget(data);
       } else {
         console.log(`Server error: ${response.status} ${response.statusText}`);
       }
     } catch (err) {
       console.log(`Network error: ${err.message}`);
     }
-  }
+  } 
+
+// //Edit budget amount (POST new budget)
+  async function newBudget(amount){
+  ///what to put in the if bracket??????????????????????????????????
+    if( amount = 0){
+      let options= {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(amount)
+      };
+  
+      try {
+        let response = await fetch("/budget", options); // do POST
+        if (response.ok) {
+          let data = await response.json();    //awaiting new data, if found post
+          setBudget(data);
+        } else {
+          console.log(`Server error: ${response.status} ${response.statusText}`);
+        }
+      } catch (err) {
+        console.log(`Network error: ${err.message}`);
+      }
+
+    } else {
+        let options= {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(amount)
+        };
+
+        try {
+          let response = await fetch("/budget/1", options); // do PUT
+          if (response.ok) {
+            let data = await response.json();    //awaiting new data, if found post
+            setBudget(data);
+          } else {
+            console.log(`Server error: ${response.status} ${response.statusText}`);
+          }
+        } catch (err) {
+          console.log(`Network error: ${err.message}`);
+        }
+        }
+
+    }
+
+
+
+
+    //POST THAT WAS WORKING for budget
+  //   async function newBudget(amount){
+  //       let options= {
+  //     method: "POST",
+  //     headers: { "Content-Type": "application/json" },
+  //     body: JSON.stringify(amount)
+  //   };
+
+  //   try {
+  //     let response = await fetch("/budget", options); // do POST
+  //     if (response.ok) {
+  //       let data = await response.json();    //awaiting new data, if found post
+  //       setUsers(data);
+  //     } else {
+  //       console.log(`Server error: ${response.status} ${response.statusText}`);
+  //     }
+  //   } catch (err) {
+  //     console.log(`Network error: ${err.message}`);
+  //   }
+  // }
   
 
-  //New User (POST new expense)
+  //PUT reset budget
+//   async function resetBudget(amount){
+  
+//     let options= {
+//   method: "PUT",
+//   headers: { "Content-Type": "application/json" },
+//   body: JSON.stringify(amount)
+// };
+
+// try {
+//   let response = await fetch("/budget/:userid", options); // do PUT
+//   if (response.ok) {
+//     let data = await response.json();    //awaiting new data, if found post
+//     setUsers(data);
+//   } else {
+//     console.log(`Server error: ${response.status} ${response.statusText}`);
+//   }
+// } catch (err) {
+//   console.log(`Network error: ${err.message}`);
+// }
+// }
+//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  // async function saveBudget(amount){
+  //   if (AMOUNT IN BUDGET SUM  =0 ){
+  //     POST
+  //   } else {
+  //     PUT
+  //   }
+  // }
+
+
+  //New expense (POST new expense)
   async function addExpense(amount){
     let options= {
     method: "POST",
@@ -80,16 +175,13 @@ function App() {
     }
   }
 
-
+//get all expenses from User 1
   async function getExpenses() {
     try {
       let response = await fetch("/expenses/1"); //GET
-      console.log(response);
       if (response.ok) {
         let data = await response.json();
         setExpenses(data);
-        console.log(expenses);
-        console.log(data);
       } else {
         console.log(`Server error: ${response.status} ${response.statusText}`);
       }
@@ -99,21 +191,22 @@ function App() {
   } 
 
 
-  // //Get All expenses from one user
-  // async function expenseList(){
+  //count all expenses from user 1 for current month
+  async function countExpenses() {
+    try {
+      let response = await fetch("/expenses/1/:month"); 
+      console.log(response);
+      if (response.ok) {
+        let data = await response.json();
+        setExpenses(data);
+      } else {
+        console.log(`Server error: ${response.status} ${response.statusText}`);
+      }
+    } catch (err) {
+      console.log(`Network error: ${err.message}`);
+    }
+  } 
 
-  //   try {
-  //   let response = await fetch("/expenses/:id"); 
-  //   if (response.ok) {
-  //     let data = await response.json();    //awaiting new data, if found post
-  //     setExpenses(data);
-  //   } else {
-  //     console.log(`Server error: ${response.status} ${response.statusText}`);
-  //   }
-  //   } catch (err) {
-  //   console.log(`Network error: ${err.message}`);
-  //   }
-  // }
 
 
   return (
@@ -122,8 +215,8 @@ function App() {
       <Navbar />
       
             <Routes>
-                <Route path="/" element={<HomeView  />} />
-                <Route path="/budget" element={<BudgetView newBudgetCb={newBudget }/>} />
+                <Route path="/" element={<HomeView countExpensesCb={countExpenses} expenses={expenses} />} />
+                <Route path="/budget" element={<BudgetView newBudgetCb={newBudget} budget={budget} />} />
                 <Route path="/expenses" element={<ExpensesView addExpenseCb= {addExpense}  expenses={expenses} />} />
                 <Route path="*" element={<Error404View />} />
             </Routes>

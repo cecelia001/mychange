@@ -29,13 +29,13 @@ const db = require("../model/helper")
     }
     });
 
-//get all expenses from 1 user in 1 month
+//calculate the number of expenses from 1 user in 1 month
 router.get("/:id/:month/", async function (req, res) {
     let id = req.params.id;
     let month = req.params.month;
     
     try {
-    let result = await db(`SELECT * FROM expenses WHERE userid=${id} AND themonth="${month}"`);
+    let result = await db(`SELECT COUNT(*) FROM expenses WHERE userid=${id} AND themonth="${month}"`);
   
       if (result.data.length === 0) {
       res.status(404).send({error: "User does not exist"});
@@ -47,7 +47,27 @@ router.get("/:id/:month/", async function (req, res) {
     }
     });
 
-//POST new expense  FIX THIS!!!!!!!!!!!!!!!!!!!!! 
+
+//calculate the sum of expenses from 1 user in 1 month
+router.get("/:id/sum/:month/", async function (req, res) {
+  let id = req.params.id;
+  let month = req.params.month;
+  
+  try {
+  let result = await db(`SELECT SUM(amount) FROM expenses WHERE userid=${id} AND themonth="${month}"`);
+
+    if (result.data.length === 0) {
+    res.status(404).send({error: "User does not exist"});
+    } else {
+    res.send(result.data);
+    }
+  } catch(err) {
+  res.status(500).send({error: err.message});
+  }
+  });
+
+
+//POST new expense 
 router.post("/", async function(req, res) {
   let { category, amount, themonth, theyear } = req.body;
 
@@ -64,6 +84,8 @@ router.post("/", async function(req, res) {
     res.status(500).send({ error: err.message });
   }
 });
+
+
 
 
 

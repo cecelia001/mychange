@@ -22,7 +22,7 @@ label{
     font-family: Arial, Helvetica, sans-serif;
     border-collapse: collapse;
     width: 100%;
-   
+    /* margin-left: 50px; */
   }
   
 .list td, .list th {
@@ -39,6 +39,6 @@ label{
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: center;
-    background-color: #04AA6D;
+    background-color: #5067e7;
     color: white;
   }
