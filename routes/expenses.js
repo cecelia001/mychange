@@ -69,11 +69,11 @@ router.get("/:id/sum/:month/", async function (req, res) {
 
 //POST new expense 
 router.post("/", async function(req, res) {
-  let { category, amount, themonth, theyear } = req.body;
+  let { categoryid, amount, themonth, theyear } = req.body;
 
   let sql = `
     INSERT INTO expenses (categoryid, amount, themonth, theyear, userid)
-    VALUES (${category}, ${amount}, '${themonth}', ${theyear}, 1);
+    VALUES (${categoryid}, ${amount}, '${themonth}', ${theyear}, 1);
     `;
 
   try {

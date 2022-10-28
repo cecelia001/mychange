@@ -3,9 +3,9 @@ import "./RecordExpense.css";
 
 const BLANK_FORM= {
     amount: "",
-    category: 'Selected value',
-    themonth: "" ,
-    theyear: "",
+    categoryid: null,
+    themonth: "",
+    theyear: ""
 };
 
 function RecordExpense(props){
@@ -26,10 +26,11 @@ function RecordExpense(props){
 
 
     return(
+        <div> 
         <form className="RecordExpense" onSubmit={handleSubmit}>
             <label>
                 Amount
-                <input
+                <input 
                 type= "number"
                 name="amount"
                 value={formData.amount}
@@ -38,13 +39,14 @@ function RecordExpense(props){
             </label>
 
 
-            <label>  FIX THIS!!!!!!!!!!!!!!!!!!!!!!!! NOT POSTING
+            <label> 
                 Category
                 <select
                 name="categoryid"
                 onChange={handleChange}
-                value={formData.cateorgyid}
+                value= {formData}
                 >
+                <option selected value="Select"> {" "} Select{" "}</option>
                 <option value="1"> Rent & Utilities</option>
                 <option value="2"> Food</option>
                 <option value="3"> Personal</option>
@@ -52,10 +54,6 @@ function RecordExpense(props){
                 <option value="5"> Other</option>
                 <option value="6"> Savings</option>
                 <option value="7"> Emergency</option>
-                <option selected value="Select">
-                    {" "}
-                    Select{" "}
-                </option>
                 </select>
             </label>
 
@@ -82,6 +80,8 @@ function RecordExpense(props){
 
             <button type="submit">Submit</button>
 
+            </form>
+
             <h3>
                 Past Expenses
 
@@ -104,22 +104,20 @@ function RecordExpense(props){
            <div> {props.expenses.map(e => (
             <li key={e.expensesid} >
 
+                {/* {props.category.map(c => (
+                    <li key ={c.categoryid} > */}
+                
+
              <table className ="list">
-                {/* <thead>
-                    <tr>
-                        <th> Amount </th>
-                        <th> Category </th>
-                        <th> Month </th>
-                        <th> Year </th>
-                    
-                    </tr>
-                </thead> */}
+
 
                 <tbody>
 
                         <td>{`$ ${e.amount}`} </td>
                        
-                        <td>{e.categoryid}</td> 
+                        {/* <td>{c.categoryName}</td>  */}
+
+                        <td>{e.categoryid}</td>
                         
                         <td>{e.themonth}</td> 
                        
@@ -127,13 +125,16 @@ function RecordExpense(props){
                         
                 </tbody>                 
             </table>
+{/* </li>
+))} */}
+ 
+
             </li>
             ))}
             </div>
     
             </h3>
-
-        </form>
+</div>
     )
 }
 

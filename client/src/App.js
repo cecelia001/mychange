@@ -16,6 +16,8 @@ function App() {
   let [users, setUsers] = useState([]);
   let [budget, setBudget] = useState([]);
   let [expenses, setExpenses] = useState([]);
+  let [category, setCategory] = useState([]);
+
   const [budgetView, setBudgetView] = useState([]);
 
 
@@ -23,6 +25,7 @@ function App() {
     getUsers();
     getExpenses();
     getBudget();
+    getCategories();
   }, []);
 
   async function getUsers() {
@@ -39,7 +42,7 @@ function App() {
     }
   } 
 
-//GET Budget obj
+//GET Budget obj from user 1
   async function getBudget() {
     try {
       let response = await fetch("budget/1");
@@ -54,10 +57,24 @@ function App() {
     }
   } 
 
+  //GET Budget obj from user 1
+  async function getCategories() {
+    try {
+      let response = await fetch("category/1");
+      if (response.ok) {
+        let data = await response.json();
+        setCategory(data);
+      } else {
+        console.log(`Server error: ${response.status} ${response.statusText}`);
+      }
+    } catch (err) {
+      console.log(`Network error: ${err.message}`);
+    }
+  } 
+
 // //Edit budget amount (POST new budget)
   async function newBudget(amount){
     const budgetExists = budget.amount > 0
-  ///what to put in the if bracket??????????????????????????????????
     if(budgetExists){
       let options= {
         method: "PUT",
@@ -161,7 +178,7 @@ function App() {
     let response = await fetch("/expenses", options); // do POST
     if (response.ok) {
       let data = await response.json();    //awaiting new data, if found post
-      setUsers(data);
+      setExpenses(data);
     } else {
       console.log(`Server error: ${response.status} ${response.statusText}`);
     }
@@ -212,7 +229,7 @@ function App() {
             <Routes>
                 <Route path="/" element={<HomeView countExpensesCb={countExpenses} expenses={expenses} />} />
                 <Route path="/budget" element={<BudgetView newBudgetCb={newBudget} budget={budget} />} />
-                <Route path="/expenses" element={<ExpensesView addExpenseCb= {addExpense}  expenses={expenses} />} />
+                <Route path="/expenses" element={<ExpensesView addExpenseCb= {addExpense}  expenses={expenses} category={category}  />} />
                 <Route path="*" element={<Error404View />} />
             </Routes>
   
