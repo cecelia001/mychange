@@ -1,17 +1,15 @@
 import React, { useState } from "react";
 import "./AddBudget.css";
 
-// const RESET_FORM= {
-//     categoryid: 1,
-//     amount: "",
-//     userid: 1
-// }
+
 
 
 function AddBudget(props){
-    // {props.budget}
+    const Initial_Form= {
+        amount: props.budget,
+    }
 
-    const [formData, setFormData] = useState(props.budget);
+    const [formData, setFormData] = useState(Initial_Form);
     // const [resetFormData, setResetFormData] = useState(RESET_FORM)
 
     
@@ -45,16 +43,14 @@ function AddBudget(props){
                 <input
                 type= "number"
                 name="rentandutilities"
-                value={formData.rentandutilities}
+                value={formData.amount}
                 onChange={handleChange}
                 />
-                {" "}
-                ${props.budget[0].amount}
                
             </label>
                 </li>
 
-                <li>
+                {/* <li>
             <label>
                 Food
                 {" "}
@@ -138,7 +134,7 @@ function AddBudget(props){
                 />
 
             </label>
-                </li>
+                </li> */}
                 </ul>
             
                 <button type="submit">Submit</button>

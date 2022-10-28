@@ -78,7 +78,7 @@ router.post("/", async function(req, res) {
 
   try {
     await db(sql); //INSERT new expense
-    let result = await db(`SELECT * FROM expenses`); //select and return updated student list
+    let result = await db(`SELECT * FROM expenses`); //select and return updated expense list
     res.status(201).send(result.data);
   } catch (err) {
     res.status(500).send({ error: err.message });
