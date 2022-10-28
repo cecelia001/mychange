@@ -2,26 +2,26 @@ import React, { useState } from "react";
 import "./AddBudget.css";
 
 
+const BLANK_FORM = {
+    category: "",
+    amount: null,
+    userid: 1
+}
 
 
 function AddBudget(props){
-    const Initial_Form= {
-        amount: props.budget,
-    }
 
-    const [formData, setFormData] = useState(Initial_Form);
-    // const [resetFormData, setResetFormData] = useState(RESET_FORM)
+    const [formData, setFormData] = useState(props.budget);
 
-    
 
     function handleSubmit(event){
         event.preventDefault();
         props.newBudgetCb(formData);
-        // setFormData(BLANK_FORM); 
+        // setFormData(); 
     }
 
     function handleChange(event){
-        event.preventDefault();
+        // event.preventDefault();
         let { name, value } = event.target;
         setFormData (data => ({...data, [name]: value}));
     }
@@ -43,25 +43,24 @@ function AddBudget(props){
                 <input
                 type= "number"
                 name="rentandutilities"
-                value={formData.amount}
+                value={formData.rentandutilities}   
                 onChange={handleChange}
                 />
                
             </label>
                 </li>
 
-                {/* <li>
+                <li>
             <label>
                 Food
                 {" "}
                 <input
                 type= "number"
                 name="food"
+                placeholder={props.budget[1].amount}
                 value={formData.food}
                 onChange={handleChange}
                 />
-                 {" "}
-                ${props.budget[1].amount}
              
             </label>
                 </li>
@@ -73,7 +72,8 @@ function AddBudget(props){
                 <input
                 type= "number"
                 name="personal"
-                value={formData[2].amount}
+                placeholder={props.budget[2].amount}
+                value={formData.personal}
                 onChange={handleChange}
                 />
               
@@ -87,7 +87,8 @@ function AddBudget(props){
                 <input
                 type= "number"
                 name="transportation"
-                value={formData[3].amount}
+                placeholder={props.budget[3].amount}
+                value={formData.transportation}
                 onChange={handleChange}
                 />
 
@@ -101,7 +102,8 @@ function AddBudget(props){
                 <input
                 type= "number"
                 name="other"
-                value={formData[4].amount}
+                placeholder={props.budget[4].amount}
+                value={formData.other}
                 onChange={handleChange}
                 />
 
@@ -115,7 +117,8 @@ function AddBudget(props){
                 <input
                 type= "number"
                 name="savings"
-                value={formData[5].amount}
+                placeholder={props.budget[5].amount}
+                value={formData.savings}
                 onChange={handleChange}
                 />
 
@@ -129,12 +132,13 @@ function AddBudget(props){
                 <input
                 type= "number"
                 name="emergency"
-                value={formData[6].amount}
+                placeholder={props.budget[6].amount}
+                value={formData.emergency}
                 onChange={handleChange}
                 />
 
             </label>
-                </li> */}
+                </li>
                 </ul>
             
                 <button type="submit">Submit</button>

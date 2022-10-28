@@ -56,8 +56,28 @@ function App() {
 
 // //Edit budget amount (POST new budget)
   async function newBudget(amount){
+    const budgetExists = budget.amount > 0
   ///what to put in the if bracket??????????????????????????????????
-    if( amount === 0){
+    if(budgetExists){
+      let options= {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(amount)
+      };
+
+      try {
+        let response = await fetch("/budget/1", options); // do PUT
+        if (response.ok) {
+          let data = await response.json();    //awaiting new data, if found post
+          setBudget(data);
+        } else {
+          console.log(`Server error: ${response.status} ${response.statusText}`);
+        }
+      } catch (err) {
+        console.log(`Network error: ${err.message}`);
+      }
+
+    } else {
       let options= {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -75,25 +95,6 @@ function App() {
       } catch (err) {
         console.log(`Network error: ${err.message}`);
       }
-
-    } else {
-        let options= {
-          method: "PUT",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(amount)
-        };
-
-        try {
-          let response = await fetch("/budget/1", options); // do PUT
-          if (response.ok) {
-            let data = await response.json();    //awaiting new data, if found post
-            setBudget(data);
-          } else {
-            console.log(`Server error: ${response.status} ${response.statusText}`);
-          }
-        } catch (err) {
-          console.log(`Network error: ${err.message}`);
-        }
         }
 
     }
@@ -124,7 +125,7 @@ function App() {
   
 
   //PUT reset budget  (changed name was resetBudget)
-//   async function resetBudget(amount){
+//   async function newBudget(amount){
   
 //     let options= {
 //   method: "PUT",
@@ -133,9 +134,9 @@ function App() {
 // };
 
 // try {
-//   let response = await fetch("/budget/1", options); // do PUT
+//   let response = await fetch("/budget/:userid", options); 
 //   if (response.ok) {
-//     let data = await response.json();    //awaiting new data, if found post
+//     let data = await response.json();    
 //     setUsers(data);
 //   } else {
 //     console.log(`Server error: ${response.status} ${response.statusText}`);
@@ -145,13 +146,7 @@ function App() {
 // }
 // }
 //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-  // async function saveBudget(amount){
-  //   if (AMOUNT IN BUDGET SUM  =0 ){
-  //     POST
-  //   } else {
-  //     PUT
-  //   }
-  // }
+
 
 
   //New expense (POST new expense)

@@ -38,11 +38,12 @@ function RecordExpense(props){
             </label>
 
 
-            <label>
+            <label>  FIX THIS!!!!!!!!!!!!!!!!!!!!!!!! NOT POSTING
                 Category
                 <select
+                name="categoryid"
                 onChange={handleChange}
-                name="category"
+                value={formData.cateorgyid}
                 >
                 <option value="1"> Rent & Utilities</option>
                 <option value="2"> Food</option>
