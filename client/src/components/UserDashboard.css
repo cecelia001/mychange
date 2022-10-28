@@ -2,44 +2,18 @@
     margin: 0px;
   }
   
-  
 
-  img{
-    width: 15%;
-  }
-  
-  #about-me{
-    text-align: center;
-  }
-  
   .dashboard{
-    height: 500px;
+    height: 300px;
     background-image:url("https://www.zambianguardian.com/wp-content/uploads/2021/12/budget.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     padding-top: 300px;
+    padding-bottom: 200px;
     background-attachment: fixed;
 
   }
   
-  .intro-title{
-    text-align: center;
-    background-color: rgba(0,0,0, 0.4);
-    padding: 80px;
-  }
-  
-  .intro-title h1{
-    color: white;
-    font-size: 40px;
-  }
-  
-  /* .my-navbar{
-    background-color: black;
-    height: 30px;
-    padding-top: 15px;
-    display: flex;
-    justify-content: space-evenly;
-  } */
   
   a{
     color: rgb(179, 158, 158);
@@ -50,4 +24,23 @@
   a:hover{
     font-size: 25px;
     color: white;
+  }
+
+  h2 {
+    margin-top: 250px;
+    font-family:  'Century Gothic', sans-serif; 
+    font-size: 48px;
+    font-weight: bold;
+    color: #c0be42; 
+  }
+  .card {
+    width: 23rem;
+    margin-top: 50px;
+    margin-left: 30px;
+  }
+
+  .card img {
+    height: 18rem;
+    width: auto;
+    object-fit: cover;
   }

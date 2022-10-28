@@ -13,34 +13,34 @@ import Error404View from './views/Error404View';
 
 function App() {
 
-  let [users, setUsers] = useState([]);
+  //  let [users, setUsers] = useState([]);
   let [budget, setBudget] = useState([]);
   let [expenses, setExpenses] = useState([]);
   let [category, setCategory] = useState([]);
-
+  
   const [budgetView, setBudgetView] = useState([]);
 
 
   useEffect(() => {
-    getUsers();
+    // getUsers();
     getExpenses();
     getBudget();
-    getCategories();
+    // getCategories();
   }, []);
 
-  async function getUsers() {
-    try {
-      let response = await fetch("/users"); //GET
-      if (response.ok) {
-        let users = await response.json();
-        setUsers(users);
-      } else {
-        console.log(`Server error: ${response.status} ${response.statusText}`);
-      }
-    } catch (err) {
-      console.log(`Network error: ${err.message}`);
-    }
-  } 
+  // async function getUsers() {
+  //   try {
+  //     let response = await fetch("/users"); //GET
+  //     if (response.ok) {
+  //       let users = await response.json();
+  //       setUsers(users);
+  //     } else {
+  //       console.log(`Server error: ${response.status} ${response.statusText}`);
+  //     }
+  //   } catch (err) {
+  //     console.log(`Network error: ${err.message}`);
+  //   }
+  // } 
 
 //GET Budget obj from user 1
   async function getBudget() {
@@ -58,19 +58,19 @@ function App() {
   } 
 
   //GET Budget obj from user 1
-  async function getCategories() {
-    try {
-      let response = await fetch("category/1");
-      if (response.ok) {
-        let data = await response.json();
-        setCategory(data);
-      } else {
-        console.log(`Server error: ${response.status} ${response.statusText}`);
-      }
-    } catch (err) {
-      console.log(`Network error: ${err.message}`);
-    }
-  } 
+  // async function getCategories() {
+  //   try {
+  //     let response = await fetch("category/1");
+  //     if (response.ok) {
+  //       let data = await response.json();
+  //       setCategory(data);
+  //     } else {
+  //       console.log(`Server error: ${response.status} ${response.statusText}`);
+  //     }
+  //   } catch (err) {
+  //     console.log(`Network error: ${err.message}`);
+  //   }
+  // } 
 
 // //Edit budget amount (POST new budget)
   async function newBudget(amount){
@@ -203,32 +203,17 @@ function App() {
   } 
 
 
-  //count all expenses from user 1 for current month
-  async function countExpenses() {
-    try {
-      let response = await fetch("/expenses/1/:month"); 
-      console.log(response);
-      if (response.ok) {
-        let data = await response.json();
-        setExpenses(data);
-      } else {
-        console.log(`Server error: ${response.status} ${response.statusText}`);
-      }
-    } catch (err) {
-      console.log(`Network error: ${err.message}`);
-    }
-  } 
 
 
 
   return (
     <div className="App">
-      <h1> myChange$ </h1>
+      <h1> my₵hange </h1>
       {/* <img src="https://www.pngkey.com/png/detail/334-3345806_this-is-a-picture-of-a-dollar-sign.png" alt="This Is A Picture Of A Dollar Sign Symbol Surrounded - Money Logo Transparent@pngkey.com" /> */}
       <Navbar />
       
             <Routes>
-                <Route path="/" element={<HomeView countExpensesCb={countExpenses} expenses={expenses} />} />
+                <Route path="/" element={<HomeView expenses={expenses} />} />
                 <Route path="/budget" element={<BudgetView newBudgetCb={newBudget} budget={budget} />} />
                 <Route path="/expenses" element={<ExpensesView addExpenseCb= {addExpense}  expenses={expenses} category={category}  />} />
                 <Route path="*" element={<Error404View />} />

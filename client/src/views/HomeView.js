@@ -5,7 +5,7 @@ import UserDashboard from "../components/UserDashboard";
 function HomeView(props) {
     return (
         <div className="HomeView">            
-            <UserDashboard />
+            <UserDashboard expenses={props.expenses} />
         </div>
     );
 }
