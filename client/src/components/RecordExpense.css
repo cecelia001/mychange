@@ -6,21 +6,55 @@ input {
 
 }
 
+h2 {
+  font-family: Arial, Helvetica, sans-serif;
+} 
 
-label{
-    display: inline;
-    text-align: right;
-    padding: 10px;
-    gap: 15px;
+
+
+ h3, h4 {
+  /* padding: 60px; */
+  color: #c0be42; 
+  font-family:  'Lucida Handwriting', sans-serif; 
+  font-weight: bold;
+}
+
+h5 {
+  color: black;
+  font-size: 15px;
+  font-family:  'Century Gothic', sans-serif; 
+}
+
+.RecordExpense {
+  border-radius: 5px;
+  border-color: #5067e7;
+  /* background-color: #5067e7; */
+  margin-left: 50px;
+  padding: 20px;
+  display: block;
+  color: #5067e7;
+  font-weight: bold;
+}
+
+.RecordExpense input[type=number], input[type=text], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
 }
 
 
+
 .list, .head {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Segoe UI', sans-serif;
     border-collapse: collapse;
-    width: 80%;
-    margin-left: 50px;
-    font-size: 20px;;
+    width: 100%;
+    margin-left: 25px;
+    font-size: 20px;
+    padding: 20px;
   }
 
   
@@ -38,7 +72,12 @@ label{
 .head th {
     padding-top: 12px;
     padding-bottom: 12px;
-    text-align: center;
+    /* text-align: center; */
     background-color: #5067e7;
     color: white;
+  }
+
+  .spacing{
+    padding-top: 30px;
+    padding-bottom: 20px;
   }

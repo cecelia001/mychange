@@ -1,10 +1,12 @@
 nav {
-    border: 1px solid #ccc;
+    width: 100%;
 }
 
 nav ul {
     list-style-type: none;
-    padding: 0;
+    padding: 25px;
+    background-color:rgb(241, 221, 195);
+    font-family: 'Open Sans Condensed', sans-serif;
 }
 
 nav li {
@@ -18,5 +20,7 @@ nav a {
 
 /* 'active' class automatically added by React Router */
 nav a.active {
-    background-color: #ccc;
+    /* text-decoration: underline dotted; */
+    font-weight:bold;
+
 }

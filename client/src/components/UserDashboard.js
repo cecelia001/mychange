@@ -34,7 +34,9 @@ function UserDashboard(props){
     //   }
 
     return (
-        <div>
+
+        <div className="dashboard">
+        
             {/* {budgetView["SUM(amount)"]} */}
             {/* {expenseView} */}
         </div>

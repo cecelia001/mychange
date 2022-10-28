@@ -27,7 +27,12 @@ function RecordExpense(props){
 
     return(
         <div> 
+
+       
+
         <form className="RecordExpense" onSubmit={handleSubmit}>
+        <h3>Record Expenses</h3>
+        <h5>Enter the total amount of expenses for each of the categories every month!</h5>
             <label>
                 Amount
                 <input 
@@ -36,25 +41,6 @@ function RecordExpense(props){
                 value={formData.amount}
                 onChange={handleChange}
                 />
-            </label>
-
-
-            <label> 
-                Category
-                <select
-                name="categoryid"
-                onChange={handleChange}
-                value= {formData}
-                >
-                <option selected value="Select"> {" "} Select{" "}</option>
-                <option value="1"> Rent & Utilities</option>
-                <option value="2"> Food</option>
-                <option value="3"> Personal</option>
-                <option value="4"> Transportation</option>
-                <option value="5"> Other</option>
-                <option value="6"> Savings</option>
-                <option value="7"> Emergency</option>
-                </select>
             </label>
 
             <label>
@@ -77,16 +63,40 @@ function RecordExpense(props){
                 />
             </label>
 
+            <label> 
+                Category
+                <select
+                name="categoryid"
+                onChange={handleChange}
+                value= {formData}
+                >
+                <option defaultValue="Select"> Select</option>
+                <option value="1"> Rent & Utilities</option>
+                <option value="2"> Food</option>
+                <option value="3"> Personal</option>
+                <option value="4"> Transportation</option>
+                <option value="5"> Other</option>
+                <option value="6"> Savings</option>
+                <option value="7"> Emergency</option>
+                </select>
+            </label>
+
 
             <button type="submit">Submit</button>
+        
+            <div className="spacing">
+
+            </div>
+
+            <h3> Past Expenses </h3>
+          
 
             </form>
 
-            <h3>
-                Past Expenses
 
 
             <div> 
+          
                 <table className="head">
                 <thead>
                     <tr>
@@ -133,7 +143,7 @@ function RecordExpense(props){
             ))}
             </div>
     
-            </h3>
+        
 </div>
     )
 }

@@ -12,6 +12,7 @@ const BLANK_FORM = {
 function AddBudget(props){
 
     const [formData, setFormData] = useState(props.budget);
+    const [preset, setPreset]= useState();
 
 
     function handleSubmit(event){
@@ -23,7 +24,7 @@ function AddBudget(props){
     function handleChange(event){
         // event.preventDefault();
         let { name, value } = event.target;
-        setFormData (data => ({...data, [name]: value}));
+        setPreset (data => ({...data, [name]: value}));
     }
 
 
@@ -31,7 +32,7 @@ function AddBudget(props){
 
         
         <div className="BudgetView">
-            <h2>Set your budgets!</h2>
+            <h2>SET YOUR BUDGET</h2>
             <h3> Categories </h3>
         
         <form className="AddBudget" onSubmit={handleSubmit} >
@@ -42,7 +43,7 @@ function AddBudget(props){
                 {" "}
                 <input
                 type= "number"
-                name="rentandutilities"
+                name="1"
                 value={formData.rentandutilities}   
                 onChange={handleChange}
                 />
@@ -56,8 +57,7 @@ function AddBudget(props){
                 {" "}
                 <input
                 type= "number"
-                name="food"
-                placeholder={props.budget[1].amount}
+                name="2"
                 value={formData.food}
                 onChange={handleChange}
                 />
@@ -72,8 +72,8 @@ function AddBudget(props){
                 <input
                 type= "number"
                 name="personal"
-                placeholder={props.budget[2].amount}
-                value={formData.personal}
+                // placeholder={props.budget[2].amount}
+                value={formData[3].amount}
                 onChange={handleChange}
                 />
               

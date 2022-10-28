@@ -223,7 +223,8 @@ function App() {
 
   return (
     <div className="App">
-      <h1> myChange </h1>
+      <h1> myChange$ </h1>
+      {/* <img src="https://www.pngkey.com/png/detail/334-3345806_this-is-a-picture-of-a-dollar-sign.png" alt="This Is A Picture Of A Dollar Sign Symbol Surrounded - Money Logo Transparent@pngkey.com" /> */}
       <Navbar />
       
             <Routes>

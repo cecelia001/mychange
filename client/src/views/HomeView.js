@@ -4,9 +4,7 @@ import UserDashboard from "../components/UserDashboard";
 
 function HomeView(props) {
     return (
-        <div className="HomeView">
-            <h2>Overview</h2>
-            <h3> Show pie chart, link to budget, link to expenses</h3>
+        <div className="HomeView">            
             <UserDashboard />
         </div>
     );

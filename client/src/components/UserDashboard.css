@@ -1,0 +1,53 @@
+*{
+    margin: 0px;
+  }
+  
+  
+
+  img{
+    width: 15%;
+  }
+  
+  #about-me{
+    text-align: center;
+  }
+  
+  .dashboard{
+    height: 500px;
+    background-image:url("https://www.zambianguardian.com/wp-content/uploads/2021/12/budget.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-top: 300px;
+    background-attachment: fixed;
+
+  }
+  
+  .intro-title{
+    text-align: center;
+    background-color: rgba(0,0,0, 0.4);
+    padding: 80px;
+  }
+  
+  .intro-title h1{
+    color: white;
+    font-size: 40px;
+  }
+  
+  /* .my-navbar{
+    background-color: black;
+    height: 30px;
+    padding-top: 15px;
+    display: flex;
+    justify-content: space-evenly;
+  } */
+  
+  a{
+    color: rgb(179, 158, 158);
+    text-decoration: none;
+    font-size: 18px;
+  }
+  
+  a:hover{
+    font-size: 25px;
+    color: white;
+  }
