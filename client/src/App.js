@@ -18,13 +18,14 @@ function App() {
   let [expenses, setExpenses] = useState([]);
   let [category, setCategory] = useState([]);
   
-  const [budgetView, setBudgetView] = useState([]);
-
+  // let [budgetView, setBudgetView] = useState([]);
+  let [sumBudget, setSumBudget] = useState([]);     //dashboard
 
   useEffect(() => {
     // getUsers();
     getExpenses();
     getBudget();
+    getBudgetTotal();
     // getCategories();
   }, []);
 
@@ -202,6 +203,21 @@ try {
     }
   } 
 
+  //monthly budget for dashboard
+  async function getBudgetTotal() {
+    try {
+      let response = await fetch("/budget/1/sum"); //does GET by default
+      if (response.ok) {
+        let data = await response.json();
+        setSumBudget(data);
+      } else {
+        console.log(`Server error: ${response.status} ${response.statusText}`);
+      }
+    } catch (err) {
+      console.log(`Server error: ${err.message}`);
+    }
+  }
+
 
 
 
@@ -213,7 +229,7 @@ try {
       <Navbar />
       
             <Routes>
-                <Route path="/" element={<HomeView expenses={expenses} />} />
+                <Route path="/" element={<HomeView expenses={expenses} sumBudget={sumBudget}/>} />
                 <Route path="/budget" element={<BudgetView newBudgetCb={newBudget} budget={budget} />} />
                 <Route path="/expenses" element={<ExpensesView addExpenseCb= {addExpense}  expenses={expenses} category={category}  />} />
                 <Route path="*" element={<Error404View />} />

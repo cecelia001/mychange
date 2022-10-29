@@ -4,32 +4,54 @@ import "./UserDashboard.css";
 
 function UserDashboard(props){
                                             //or empty array  .amount
-const [sumExpenses, setSumExpenses] = useState(props.expenses);
+// const [sumExpenses, setSumExpenses] = useState(props.expenses);
+const [sumBudget, setSumBudget] = useState('');
+
 
 //why isn't this working? I'm setting initial state to props.expenses and
 //function is updating sumExpenses to sum from 1 month
 //mapping below by everything from expenses is being mapped, not just the filtered month
 
   //sum of all expenses from user 1 for current month
-  async function monthlySumExpenses(props) {
-    try {
-      let response = await fetch("/expenses/1/sum/January"); 
-      console.log(response);
-      if (response.ok) {
-        let data = await response.json();
-        setSumExpenses(data);
-      } else {
-        console.log(`Server error: ${response.status} ${response.statusText}`);
-      }
-    } catch (err) {
-      console.log(`Network error: ${err.message}`);
-    }
-  } 
-  
+  // async function monthlySumExpenses(props) {
+  //   try {
+  //     let response = await fetch("/expenses/1/sum/January"); 
+  //     console.log(response);
+  //     if (response.ok) {
+  //       let data = await response.json();
+  //       setSumExpenses(data);
+  //     } else {
+  //       console.log(`Server error: ${response.status} ${response.statusText}`);
+  //     }
+  //   } catch (err) {
+  //     console.log(`Network error: ${err.message}`);
+  //   }
+  // } 
+
+  // async function monthlyBudget() {
+  //   try {
+  //     let response = await fetch("/budget/1/sum"); //does GET by default
+  //     if (response.ok) {
+  //       let data = await response.json();
+  //       setSumBudget(data);
+  //     } else {
+  //       console.log(`Server error: ${response.status} ${response.statusText}`);
+  //     }
+  //   } catch (err) {
+  //     console.log(`Server error: ${err.message}`);
+  //   }
+  // }
+
+
+
 
     return (
 
         <div className="dashboard">
+ 
+        <p>You clicked {sumBudget} times</p>
+
+
 
             <h2> My Dashboard </h2>
             <div className = "row">
@@ -70,6 +92,9 @@ const [sumExpenses, setSumExpenses] = useState(props.expenses);
                 </div>
             
                     
+   
+
+                
     
         </div>
 
