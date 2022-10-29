@@ -1,11 +1,3 @@
-input {
-    display: inline-block;
-    margin: auto;
-    width: 100px;
-    height: 20px;
-
-}
-
 li {
     list-style: none;
 }
@@ -18,7 +10,59 @@ label{
     gap: 15px;
 }
 
-h2, h3 {
-    padding: 5px;
+
+.BudgetView h2 {
+  font-family: 'Avantgarde, TeX Gyre Adventor, URW Gothic L', sans-serif;
+  margin-top: 10px;
+  margin-bottom: 50px;
+  text-align: center;
+} 
+
+
+
+ .BudgetView h3 {
+  color: #c0be42; 
+  font-family: 'Lucida Handwriting';
+  font-size: 15px;
+  text-align: right;
+  margin-right: 150px;
+}
+
+
+.BudgetView {
+  border-radius: 5px;
+  padding: 20px;
+  display: block;
+  color: #5067e7;
+  font-weight: bold;
+}
+
+.BudgetView input[type=number], input[type=text], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.backgroundColor {
+  background-color: #f2f2f2;
+  
+
 
 }
+.BudgetView .column {
+    width: 30%;
+    margin: auto;
+  }
+  
+.column img {
+    /* float: left; */
+    width: 575px;
+    height: 575px;
+    border-radius: 1000px;
+}
+
+

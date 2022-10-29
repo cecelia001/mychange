@@ -17,7 +17,7 @@ nav li {
 
 nav a {
     padding:20px;
-    font-size: 19px;;
+    font-size: 19px;
 }
 
 /* 'active' class automatically added by React Router */

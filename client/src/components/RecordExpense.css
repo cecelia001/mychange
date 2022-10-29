@@ -3,10 +3,9 @@ input {
     margin: auto;
     width: 100px;
     height: 20px;
-
 }
 
-h2 {
+.RecordExpenses h2 {
   font-family: Arial, Helvetica, sans-serif;
 } 
 
@@ -17,19 +16,23 @@ h2 {
   color: #c0be42; 
   font-family:  'Lucida Handwriting', sans-serif; 
   font-weight: bold;
+  font-size: 35px;
 }
 
 h5 {
   color: black;
-  font-size: 15px;
+  font-size: 18px;
+  font-weight: medium;
   font-family:  'Century Gothic', sans-serif; 
+  padding: 20px;
 }
 
 .RecordExpense {
   border-radius: 5px;
-  border-color: #5067e7;
+  background-color: #f2f2f2;
+  width: 90%;
+  margin: auto;
   /* background-color: #5067e7; */
-  margin-left: 50px;
   padding: 20px;
   display: block;
   color: #5067e7;
@@ -46,15 +49,14 @@ h5 {
   box-sizing: border-box;
 }
 
-
-
 .list, .head {
     font-family: 'Segoe UI', sans-serif;
     border-collapse: collapse;
-    width: 100%;
-    margin-left: 25px;
+    width: 90%;
+    margin: auto;
+    /* margin-left: 25px; */
     font-size: 20px;
-    padding: 20px;
+    /* padding: 50px; */
   }
 
   
@@ -66,7 +68,8 @@ h5 {
   }
   
 .list td:nth-child(even){
-  background-color: #f2f2f2;}
+  background-color: #f2f2f2;
+}
   
   
 .head th {
@@ -77,7 +80,8 @@ h5 {
     color: white;
   }
 
-  .spacing{
-    padding-top: 30px;
+.spacing{
+    padding-top: 5px;
     padding-bottom: 20px;
   }
+

@@ -17,7 +17,7 @@ CREATE TABLE category (
     categoryName VARCHAR(100)
 ); 
 INSERT INTO category (categoryName)  
-    VALUES ('rent&utilities'), ('food'), ('personal'), ('transportation'), ('other'), ('savings'), ('emergency');
+    VALUES ('rentandutilities'), ('food'), ('personal'), ('transportation'), ('other'), ('savings'), ('emergency');
 
 
 
@@ -58,11 +58,4 @@ INSERT INTO expenses (categoryid, amount, themonth, theyear, userid)
            (4, 50, 'February', 2022, 1),
            (5, 125, 'February', 2022, 1),
            (6, 100, 'February', 2022, 1),
-           (7, 50, 'February', 2022, 1),
-           (1, 1500, 'October', 2022, 2), 
-           (2, 700, 'October', 2022, 2),
-           (3, 180, 'October', 2022, 2),
-           (4, 50, 'October', 2022, 2),
-           (5, 0, 'October', 2022, 2),
-           (6, 200, 'October', 2022, 2),
-           (7, 100, 'October', 2022, 2);
+           (7, 50, 'February', 2022, 1);

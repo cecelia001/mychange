@@ -3,7 +3,7 @@ import "./RecordExpense.css";
 
 const BLANK_FORM= {
     amount: "",
-    categoryid: null,
+    categoryid: "",
     themonth: "",
     theyear: ""
 };
@@ -32,8 +32,9 @@ function RecordExpense(props){
 
         <form className="RecordExpense" onSubmit={handleSubmit}>
         <h3>Record Expenses</h3>
-        <h5>Enter the total amount of expenses for each of the categories every month!</h5>
-            <label>
+        <h5>Enter the total monthly amount of expenses for each category.</h5>
+           <li>
+             <label>
                 Amount
                 <input 
                 type= "number"
@@ -62,13 +63,15 @@ function RecordExpense(props){
                 onChange={handleChange}
                 />
             </label>
+            </li>
 
+            <li>
             <label> 
                 Category
                 <select
                 name="categoryid"
                 onChange={handleChange}
-                value= {formData}
+                value= {formData.categoryid}
                 >
                 <option defaultValue="Select"> Select</option>
                 <option value="1"> Rent & Utilities</option>
@@ -80,20 +83,21 @@ function RecordExpense(props){
                 <option value="7"> Emergency</option>
                 </select>
             </label>
+            </li>
 
-
+            <div className="spacing"> </div>
+            <li>
             <button type="submit">Submit</button>
-        
-            <div className="spacing">
-
-            </div>
-
-            <h3> Past Expenses </h3>
-          
+            </li>
 
             </form>
+        
+            <div className="spacing"></div>
+            <div className="spacing"></div>
 
+            <h3> Past Expenses </h3>
 
+            <div className="spacing"></div>
 
             <div> 
           

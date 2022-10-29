@@ -58,63 +58,63 @@ function App() {
   } 
 
   //GET Budget obj from user 1
-  // async function getCategories() {
-  //   try {
-  //     let response = await fetch("category/1");
-  //     if (response.ok) {
-  //       let data = await response.json();
-  //       setCategory(data);
-  //     } else {
-  //       console.log(`Server error: ${response.status} ${response.statusText}`);
-  //     }
-  //   } catch (err) {
-  //     console.log(`Network error: ${err.message}`);
-  //   }
-  // } 
-
-// //Edit budget amount (POST new budget)
-  async function newBudget(amount){
-    const budgetExists = budget.amount > 0
-    if(budgetExists){
-      let options= {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(amount)
-      };
-
-      try {
-        let response = await fetch("/budget/1", options); // do PUT
-        if (response.ok) {
-          let data = await response.json();    //awaiting new data, if found post
-          setBudget(data);
-        } else {
-          console.log(`Server error: ${response.status} ${response.statusText}`);
-        }
-      } catch (err) {
-        console.log(`Network error: ${err.message}`);
+  async function getCategories() {
+    try {
+      let response = await fetch("category/1");
+      if (response.ok) {
+        let data = await response.json();
+        setCategory(data);
+      } else {
+        console.log(`Server error: ${response.status} ${response.statusText}`);
       }
-
-    } else {
-      let options= {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(amount)
-      };
-  
-      try {
-        let response = await fetch("/budget", options); // do POST
-        if (response.ok) {
-          let data = await response.json();    //awaiting new data, if found post
-          setBudget(data);
-        } else {
-          console.log(`Server error: ${response.status} ${response.statusText}`);
-        }
-      } catch (err) {
-        console.log(`Network error: ${err.message}`);
-      }
-        }
-
+    } catch (err) {
+      console.log(`Network error: ${err.message}`);
     }
+  } 
+
+// //Edit budget amount (POST OR PUT new budget)
+  // async function newBudget(amount){
+  //   const budgetExists = budget.amount > 0
+  //   if(budgetExists){
+  //     let options= {
+  //       method: "PUT",
+  //       headers: { "Content-Type": "application/json" },
+  //       body: JSON.stringify(amount)
+  //     };
+
+  //     try {
+  //       let response = await fetch("/budget/1", options); // do PUT
+  //       if (response.ok) {
+  //         let data = await response.json();    //awaiting new data, if found post
+  //         setBudget(data);
+  //       } else {
+  //         console.log(`Server error: ${response.status} ${response.statusText}`);
+  //       }
+  //     } catch (err) {
+  //       console.log(`Network error: ${err.message}`);
+  //     }
+
+  //   } else {
+  //     let options= {
+  //       method: "POST",
+  //       headers: { "Content-Type": "application/json" },
+  //       body: JSON.stringify(amount)
+  //     };
+  
+  //     try {
+  //       let response = await fetch("/budget", options); // do POST
+  //       if (response.ok) {
+  //         let data = await response.json();    //awaiting new data, if found post
+  //         setBudget(data);
+  //       } else {
+  //         console.log(`Server error: ${response.status} ${response.statusText}`);
+  //       }
+  //     } catch (err) {
+  //       console.log(`Network error: ${err.message}`);
+  //     }
+  //       }
+
+  //   }
 
 
 
@@ -142,26 +142,26 @@ function App() {
   
 
   //PUT reset budget  (changed name was resetBudget)
-//   async function newBudget(amount){
+  async function newBudget(amount){
   
-//     let options= {
-//   method: "PUT",
-//   headers: { "Content-Type": "application/json" },
-//   body: JSON.stringify(amount)
-// };
+  let options= {
+  method: "PUT",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify(amount)
+};
 
-// try {
-//   let response = await fetch("/budget/:userid", options); 
-//   if (response.ok) {
-//     let data = await response.json();    
-//     setUsers(data);
-//   } else {
-//     console.log(`Server error: ${response.status} ${response.statusText}`);
-//   }
-// } catch (err) {
-//   console.log(`Network error: ${err.message}`);
-// }
-// }
+try {
+  let response = await fetch("/budget/1", options); 
+  if (response.ok) {
+    let data = await response.json();    
+    setBudget(data);
+  } else {
+    console.log(`Server error: ${response.status} ${response.statusText}`);
+  }
+} catch (err) {
+  console.log(`Network error: ${err.message}`);
+}
+}
 //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 
