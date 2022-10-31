@@ -7,7 +7,7 @@ function ExpensesView(props) {
     return (
         <div className="ExpensesView">
             
-            <RecordExpense addExpenseCb= {props.addExpenseCb} expenses={props.expenses} category= {props.category} />
+            <RecordExpense addExpenseCb= {props.addExpenseCb} expenses={props.expenses} setSumMonthExpenses ={props.setSumMonthExpenses} sumMonthExpenses={props.sumMonthExpenses} />
 
         </div>
     );

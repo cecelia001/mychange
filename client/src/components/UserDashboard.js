@@ -29,7 +29,7 @@ useEffect(() => {
                     <img src="https://media.istockphoto.com/vectors/piggy-bank-vector-id983438172?k=20&m=983438172&s=170667a&w=0&h=jHNPxW-0NCZD5MM_PfTu78kG50qFCyuSxhA377pvCHs=" className="card-img-top" alt="piggybank"/>
                     <div className="card-body">
                         <h5 className="card-title">Total Monthly Budget</h5>
-                        <p className="card-text"> ${Object.values(props.sumBudget)} </p>
+                        <p className="card-text"> ${props.sumBudget} </p>
                 </div>
                 </div>
                 </div>
@@ -40,7 +40,7 @@ useEffect(() => {
                     <img src="https://media.istockphoto.com/vectors/many-bank-cards-in-one-hand-vector-id1128868969?k=20&m=1128868969&s=612x612&w=0&h=Faxjl8SsDLzAgCFiIodnqigborUKgKLlYzPKCvkkTJ4=" className="card-img-top" alt="card"/>
                     <div className="card-body">
                         <h5 className="card-title">Total Monthly Expenses</h5>
-                        <p className="card-text"> ${Object.values(props.sumMonthExpenses)} </p>
+                        <p className="card-text"> ${props.sumMonthExpenses} </p>
                         {/* <a href="#" className="btn btn-primary">Go somewhere</a> */}
                     </div>
                 </div>
@@ -52,7 +52,7 @@ useEffect(() => {
                     <img src="https://img.freepik.com/free-vector/money-bag-background-design_1270-41.jpg?w=360" className="card-img-top" alt="money"/>
                     <div className="card-body">
                         <h5 className="card-title">Difference</h5>
-                        <p className="card-text" > $ {leftover(Object.values(props.sumBudget), Object.values(props.sumMonthExpenses))} </p>
+                        <p className="card-text" > $ {leftover(props.sumBudget, props.sumMonthExpenses)} </p>
                         {/* <a href="#" className="btn btn-primary">Go somewhere</a> */}
                     </div>
                 </div>

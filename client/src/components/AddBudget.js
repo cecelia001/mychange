@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect} from "react";
 import "./AddBudget.css";
 
 
@@ -12,7 +12,10 @@ import "./AddBudget.css";
 function AddBudget(props){
 
     const [formData, setFormData] = useState(toNewFormat(props.budget));  // Jim
-    console.log(formData);
+    const [showConfirm, setShowConfirm] = useState(false)
+
+
+ 
     // Create and return an obj of format category: amount
     function toNewFormat() {
         let newFormat = {};
@@ -41,6 +44,8 @@ function AddBudget(props){
         let oldFormat = toOldFormat();  // Jim
        // console.log('submit', oldFormat);
         props.newBudgetCb(oldFormat);
+        // props.setSumBudget(props.sumBudget + formData.amount)
+        setShowConfirm(true);
         setFormData(props.budget); 
     }
 
@@ -68,6 +73,7 @@ function AddBudget(props){
             <div className = "column" >
                 <div className ="backgroundColor">
                 <form className="AddBudget" onSubmit={handleSubmit} >
+
                 <ul>
                     <li>
 
@@ -172,7 +178,15 @@ function AddBudget(props){
                 
                     <button type="submit" className="btn btn-secondary">Submit</button>
 
+                    {showConfirm && (
+                        <div className="alert alert-success">
+                        <strong>Success!</strong> Budgets have been updated.
+                        </div>
+                    )}
+
                     <div className="spacing"></div>
+
+                   
 
                  </form>
                  </div>

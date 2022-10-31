@@ -14,6 +14,8 @@ function RecordExpense(props){
     function handleSubmit(event){
         event.preventDefault();
         props.addExpenseCb(formData);
+        props.setSumMonthExpenses(props.sumMonthExpenses + +formData.amount);
+        // console.log(props.sumMonthExpenses)
         setFormData(BLANK_FORM);
     }
 
