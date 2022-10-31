@@ -2,17 +2,17 @@ import React, { useState } from "react";
 import "./AddBudget.css";
 
 
-const BLANK_FORM = {
-    category: "",
-    amount: null,
-    userid: 1
-}
+// const BLANK_FORM = {
+//     category: "",
+//     amount: null,
+//     userid: 1
+// }
 
 
 function AddBudget(props){
 
-    const [formData, setFormData] = useState( toNewFormat(props.budget) );  // Jim
-    
+    const [formData, setFormData] = useState(toNewFormat(props.budget));  // Jim
+    console.log(formData);
     // Create and return an obj of format category: amount
     function toNewFormat() {
         let newFormat = {};
@@ -39,9 +39,9 @@ function AddBudget(props){
     function handleSubmit(event){
         event.preventDefault();
         let oldFormat = toOldFormat();  // Jim
-        console.log('submit', oldFormat);
+       // console.log('submit', oldFormat);
         props.newBudgetCb(oldFormat);
-        setFormData(); 
+        setFormData(props.budget); 
     }
 
     function handleChange(event){
@@ -49,7 +49,6 @@ function AddBudget(props){
         let { name, value } = event.target;
         setFormData (data => ({...data, [name]: value}));
     }
-
 
 
     return (
@@ -65,6 +64,7 @@ function AddBudget(props){
             </div>
     
 
+
             <div className = "column" >
                 <div className ="backgroundColor">
                 <form className="AddBudget" onSubmit={handleSubmit} >
@@ -72,7 +72,7 @@ function AddBudget(props){
                     <li>
 
                     <div className="spacing"></div>
-
+                
                 <label>
                     Rent & Utilities
                     <input
@@ -81,8 +81,8 @@ function AddBudget(props){
                     value={formData.rentandutilities}   
                     onChange={handleChange}
                     />
-                
                 </label>
+
                     </li>
 
                     <li>
