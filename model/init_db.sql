@@ -30,7 +30,7 @@ CREATE TABLE budget (
     userid INT
 ); 
 INSERT INTO budget (categoryid, amount, userid)  
-    VALUES (1, 1500, 1), (2, 600, 1), (3, 150, 1), (4, 50, 1), (5, 60, 1), (6, 100, 1), (7, 50, 1);
+    VALUES (1, 1600, 1), (2, 500, 1), (3, 150, 1), (4, 100, 1), (5, 100, 1), (6, 100, 1), (7, 50, 1);
 
 
 
@@ -52,10 +52,9 @@ INSERT INTO expenses (categoryid, amount, themonth, theyear, userid)
            (5, 60, 'January', 2022, 1),
            (6, 100, 'January', 2022, 1),
            (7, 50, 'January', 2022, 1),
-           (1, 1000, 'February', 2022, 1),
-           (2, 650, 'February', 2022, 1),
-           (3, 250, 'February', 2022, 1),
-           (4, 50, 'February', 2022, 1),
-           (5, 125, 'February', 2022, 1),
-           (6, 100, 'February', 2022, 1),
-           (7, 50, 'February', 2022, 1);
+           (1, 1550, 'October', 2022, 1),
+           (2, 550, 'October', 2022, 1),
+           (4, 50, 'October', 2022, 1),
+           (5, 60, 'October', 2022, 1),
+           (6, 100, 'October', 2022, 1),
+           (7, 50, 'October', 2022, 1);
