@@ -39,7 +39,6 @@ router.get("/:id/sum", async function (req, res) {
   
   try {
   let result = await db(`SELECT SUM(amount) FROM budget WHERE userid=${id};`);
-
     if (result.data.length === 0) {
     res.status(404).send({error: "User does not exist"});
     } else {
@@ -76,20 +75,21 @@ router.post("/", async function(req, res) {
     let { categoryid, amount, userid } = req.body;
 
       try {
-        let result = await db(`SELECT * FROM budget WHERE categoryid=${categoryid} AND userid = ${userid}`); 
+        let result = await db(`SELECT * FROM budget WHERE userid = ${userid}`); 
         if (result.data.length === 0) {
           res.status(404).send({ error: "User not found" });
         } else {
-          for (let c in req.body) {
+          for (let c of req.body) {
             let sql = `
               UPDATE budget
               SET amount = ${amount}
               WHERE userid= ${userid} AND categoryid=${categoryid};        
             `
-          await db(sql); 
+          await db(sql[c]); 
+          }
           result = await db(`SELECT * FROM budget WHERE userid = ${userid}`);
           res.send(result.data);
-          }
+          
         }
       } catch (err) {
         res.status(500).send({ error: err.message });

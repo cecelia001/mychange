@@ -28,8 +28,6 @@ function RecordExpense(props){
     return(
         <div> 
 
-       
-
         <form className="RecordExpense" onSubmit={handleSubmit}>
         <h3>Record Expenses</h3>
         <h5>Enter the total monthly amount of expenses for each category.</h5>
@@ -70,10 +68,11 @@ function RecordExpense(props){
                 Category
                 <select
                 name="categoryid"
-                onChange={handleChange}
                 value= {formData.categoryid}
+                onChange={handleChange}
                 >
                 <option defaultValue="Select"> Select</option>
+                {/* <option selected value="Select"> Select</option> */}
                 <option value="1"> Rent & Utilities</option>
                 <option value="2"> Food</option>
                 <option value="3"> Personal</option>
@@ -87,42 +86,42 @@ function RecordExpense(props){
 
             <div className="spacing"> </div>
             <li>
-            <button type="submit">Submit</button>
+            <button type="submit" className="btn btn-success" >Submit</button>
             </li>
 
             </form>
         
-            <div className="spacing"></div>
-            <div className="spacing"></div>
+        <div className="spacing"></div>
+        <div className="spacing"></div>
 
-            <h3> Past Expenses </h3>
+        <h3> Past Expenses </h3>
 
-            <div className="spacing"></div>
+        <div className="spacing"></div>
 
-            <div> 
-          
-                <table className="head">
-                <thead>
-                    <tr>
-                        <th> Amount </th>
-                        <th> Category </th>
-                        <th> Month </th>
-                        <th> Year </th>
-                    
-                    </tr>
-                </thead>
-                </table>
-
-            </div>
-           
-           <div> {props.expenses.map(e => (
-            <li key={e.expensesid} >
-
-                {/* {props.category.map(c => (
-                    <li key ={c.categoryid} > */}
+        <div> 
+    
+            <table className="head">
+            <thead>
+                <tr>
+                    <th> Amount </th>
+                    <th> Category </th>
+                    <th> Month </th>
+                    <th> Year </th>
                 
+                </tr>
+            </thead>
+            </table>
 
-             <table className ="list">
+        </div>
+    
+    <div> {props.expenses.map(e => (
+        <li key={e.expensesid} >
+
+            {/* {props.category.map(c => (
+                <li key ={c.categoryid} > */}
+            
+
+        <table className ="list">
 
 
                 <tbody>

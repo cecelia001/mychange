@@ -14,7 +14,6 @@ input {
  h3, h4 {
   /* padding: 60px; */
   color: #c0be42; 
-  font-family:  'Lucida Handwriting', sans-serif; 
   font-weight: bold;
   font-size: 35px;
 }
@@ -45,8 +44,33 @@ h5 {
   margin: 8px 0;
   display: inline;
   border: 1px solid #ccc;
-  border-radius: 4px;
+  border-radius: 10px;
   box-sizing: border-box;
+  width: 200px;
+  height: 35px;
+}
+
+.RecordExpense input[type=text], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-sizing: border-box;
+  width: 200px;
+}
+
+.RecordExpense select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-sizing: border-box;
+  width: 200px;
+  height:auto;
 }
 
 .list, .head {
@@ -85,3 +109,8 @@ h5 {
     padding-bottom: 20px;
   }
 
+
+.RecordExpense .btn-secondary {
+  margin: auto;
+}
+  

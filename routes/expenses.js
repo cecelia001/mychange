@@ -29,7 +29,7 @@ const db = require("../model/helper")
     }
     });
 
-//calculate the number of expenses from 1 user in 1 month
+// //calculate the number of expenses from 1 user in 1 month    
 // router.get("/:id/:month/", async function (req, res) {
 //     let id = req.params.id;
 //     let month = req.params.month;
@@ -48,18 +48,18 @@ const db = require("../model/helper")
 //     });
 
 
-//calculate the sum of expenses from 1 user in 1 month
+//calculate the sum of expenses from 1 user in 1 month //dashboard
 router.get("/:id/sum/:month/", async function (req, res) {
   let id = req.params.id;
   let month = req.params.month;
   
   try {
-  let result = await db(`SELECT SUM(amount) FROM expenses WHERE userid=${id} AND themonth="${month}"`);
+  let result = await db(`SELECT SUM(amount) FROM expenses WHERE userid=${id} AND themonth="${month}";`);
 
     if (result.data.length === 0) {
     res.status(404).send({error: "User does not exist"});
     } else {
-    res.send(result.data);
+    res.send(result.data[0]);
     }
   } catch(err) {
   res.status(500).send({error: err.message});

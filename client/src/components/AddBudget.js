@@ -75,7 +75,6 @@ function AddBudget(props){
 
                 <label>
                     Rent & Utilities
-                    {" "}
                     <input
                     type= "number"
                     name ="rentandutilities"
@@ -166,12 +165,12 @@ function AddBudget(props){
                     value={formData.emergency}
                     onChange={handleChange}
                     />
-
                 </label>
                     </li>
+                
                     </ul>
                 
-                    <button type="submit">Submit</button>
+                    <button type="submit" className="btn btn-secondary">Submit</button>
 
                     <div className="spacing"></div>
 

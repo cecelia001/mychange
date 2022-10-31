@@ -18,7 +18,7 @@ function App() {
   let [expenses, setExpenses] = useState([]);
   let [category, setCategory] = useState([]);
   
-  // let [budgetView, setBudgetView] = useState([]);
+  let [sumMonthExpenses, setSumMonthExpenses] = useState([]); //dashboard
   let [sumBudget, setSumBudget] = useState([]);     //dashboard
 
   useEffect(() => {
@@ -26,7 +26,7 @@ function App() {
     getExpenses();
     getBudget();
     getBudgetTotal();
-    // getCategories();
+    getMonthExpensesTotal();
   }, []);
 
   // async function getUsers() {
@@ -218,7 +218,20 @@ try {
     }
   }
 
-
+  async function getMonthExpensesTotal() {
+    try {
+      let response = await fetch("/expenses/1/sum/January"); 
+      // console.log(response);
+      if (response.ok) {
+        let data = await response.json();
+        setSumMonthExpenses(data);
+      } else {
+        console.log(`Server error: ${response.status} ${response.statusText}`);
+      }
+    } catch (err) {
+      console.log(`Network error: ${err.message}`);
+    }
+  }
 
 
 
@@ -229,9 +242,9 @@ try {
       <Navbar />
       
             <Routes>
-                <Route path="/" element={<HomeView expenses={expenses} sumBudget={sumBudget}/>} />
+                <Route path="/" element={<HomeView expenses={expenses} sumBudget={sumBudget} sumMonthExpenses ={sumMonthExpenses}/>} />
                 <Route path="/budget" element={<BudgetView newBudgetCb={newBudget} budget={budget} />} />
-                <Route path="/expenses" element={<ExpensesView addExpenseCb= {addExpense}  expenses={expenses} category={category}  />} />
+                <Route path="/expenses" element={<ExpensesView addExpenseCb= {addExpense}  expenses={expenses} category={category}/>} />
                 <Route path="*" element={<Error404View />} />
             </Routes>
   
