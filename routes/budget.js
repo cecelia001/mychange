@@ -71,21 +71,22 @@ router.post("/", async function(req, res) {
 
   //PUT new budget
   router.put("/:userid", async function(req, res) {
-
-    let { categoryid, amount, userid } = req.body;
+    let budgetArr = req.body;
+    let userid = req.params.userid
+    // let { categoryid, amount, userid } = req.body;
 
       try {
-        let result = await db(`SELECT * FROM budget WHERE userid = ${userid}`); 
+        let result = await db(`SELECT * FROM budget WHERE userid = 1`); 
         if (result.data.length === 0) {
           res.status(404).send({ error: "User not found" });
         } else {
-          for (let c of req.body) {
+          for (let c of budgetArr) {
             let sql = `
               UPDATE budget
-              SET amount = ${amount}
-              WHERE userid= ${userid} AND categoryid=${categoryid};        
+              SET amount = ${c.amount}
+              WHERE userid= ${c.userid} AND categoryid=${c.categoryid};        
             `
-          await db(sql[c]); 
+          await db(sql); 
           }
           result = await db(`SELECT * FROM budget WHERE userid = ${userid}`);
           res.send(result.data);
