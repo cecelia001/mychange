@@ -29,7 +29,7 @@ const db = require("../model/helper")
     }
     });
 
-// //calculate the number of expenses from 1 user in 1 month    
+// //calculate the number of expenses from 1 user in 1 month (used sum instead)
 // router.get("/:id/:month/", async function (req, res) {
 //     let id = req.params.id;
 //     let month = req.params.month;

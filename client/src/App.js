@@ -13,10 +13,10 @@ import Error404View from './views/Error404View';
 
 function App() {
 
-  //  let [users, setUsers] = useState([]);
+  //  let [users, setUsers] = useState([]); //didn't get to adding another user
   let [budget, setBudget] = useState([]);
   let [expenses, setExpenses] = useState([]);
-  // let [category, setCategory] = useState([]);
+  // let [category, setCategory] = useState([]);  //didn't end up needing
   
   let [sumMonthExpenses, setSumMonthExpenses] = useState(); //dashboard & Expenses View
   let [sumBudget, setSumBudget] = useState();     //dashboard
@@ -58,42 +58,27 @@ function App() {
     }
   } 
 
-  //GET Budget obj from user 1
-  // async function getCategories() {
+
+    //POST for budget (not needed because only 1 user with budget in database already)
+  //   async function newBudget(amount){
+  //       let options= {
+  //     method: "POST",
+  //     headers: { "Content-Type": "application/json" },
+  //     body: JSON.stringify(amount)
+  //   };
+
   //   try {
-  //     let response = await fetch("category/1");
+  //     let response = await fetch("/budget", options); // do POST
   //     if (response.ok) {
-  //       let data = await response.json();
-  //       setCategory(data);
+  //       let data = await response.json();    //awaiting new data, if found post
+  //       setBudget(data);
   //     } else {
   //       console.log(`Server error: ${response.status} ${response.statusText}`);
   //     }
   //   } catch (err) {
   //     console.log(`Network error: ${err.message}`);
   //   }
-  // } 
-
-
-    //POST for budget (not needed because only 1 user with budget in database)
-    async function newBudget(amount){
-        let options= {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(amount)
-    };
-
-    try {
-      let response = await fetch("/budget", options); // do POST
-      if (response.ok) {
-        let data = await response.json();    //awaiting new data, if found post
-        setBudget(data);
-      } else {
-        console.log(`Server error: ${response.status} ${response.statusText}`);
-      }
-    } catch (err) {
-      console.log(`Network error: ${err.message}`);
-    }
-  }
+  // }
   
 
   //PUT reset budget (AddBudget.js)

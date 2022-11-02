@@ -5,10 +5,10 @@ var logger = require('morgan');
 const cors = require('cors');
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+// var usersRouter = require('./routes/users');
 var budgetRouter = require('./routes/budget');
 var expensesRouter = require('./routes/expenses');
-var categoryRouter = require('./routes/category');
+// var categoryRouter = require('./routes/category');
 
 var app = express();
 
@@ -20,9 +20,9 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+// app.use('/users', usersRouter);
 app.use('/budget', budgetRouter);
 app.use('/expenses', expensesRouter);
-app.use('/category', categoryRouter);
+// app.use('/category', categoryRouter);
 
 module.exports = app;

@@ -3,9 +3,7 @@ import "./UserDashboard.css";
 
 
 function UserDashboard(props){
-                                            //or empty array  .amount
-// const [sumExpenses, setSumExpenses] = useState(props.expenses);
-// const [sumBudget, setSumBudget] = useState(props.sumBudget.amount);
+                                            
 
 useEffect(() => {
     leftover(props.sumBudget, props.sumMonthExpenses);
@@ -15,7 +13,6 @@ useEffect(() => {
         return (a - b)
     }
 
-    // console.log(leftover(Object.values(props.sumBudget), Object.values(props.sumMonthExpenses)));
 
     return (
 
@@ -41,7 +38,6 @@ useEffect(() => {
                     <div className="card-body">
                         <h5 className="card-title">Total Monthly Expenses</h5>
                         <p className="card-text"> ${props.sumMonthExpenses} </p>
-                        {/* <a href="#" className="btn btn-primary">Go somewhere</a> */}
                     </div>
                 </div>
                 </div>
@@ -53,7 +49,6 @@ useEffect(() => {
                     <div className="card-body">
                         <h5 className="card-title">Difference</h5>
                         <p className="card-text" > $ {leftover(props.sumBudget, props.sumMonthExpenses)} </p>
-                        {/* <a href="#" className="btn btn-primary">Go somewhere</a> */}
                     </div>
                 </div>
                 </div>
@@ -66,7 +61,6 @@ useEffect(() => {
 
 export default UserDashboard;
 
-//compare this month to last month
 
 
 

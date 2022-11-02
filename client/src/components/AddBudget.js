@@ -2,16 +2,9 @@ import React, { useState, useEffect} from "react";
 import "./AddBudget.css";
 
 
-// const BLANK_FORM = {
-//     category: "",
-//     amount: null,
-//     userid: 1
-// }
-
-
 function AddBudget(props){
 
-    const [formData, setFormData] = useState(toNewFormat(props.budget));  // Jim
+    const [formData, setFormData] = useState(toNewFormat(props.budget)); 
     const [showConfirm, setShowConfirm] = useState(false)
 
 
@@ -26,7 +19,7 @@ function AddBudget(props){
         return newFormat;
     }
 
-    // Jim
+    
     // Return budget data back to original format for submitting
     function toOldFormat() {
         let oldFormat = [];
@@ -41,12 +34,12 @@ function AddBudget(props){
 
     function handleSubmit(event){
         event.preventDefault();
-        let oldFormat = toOldFormat();  // Jim
+        let oldFormat = toOldFormat();  
        // console.log('submit', oldFormat);
         props.newBudgetCb(oldFormat);
-        // props.setSumBudget(props.sumBudget + formData.amount)
         setShowConfirm(true);
-        setFormData(props.budget); 
+        setFormData(props.budget);
+        // props.setSumBudget(toOldFormat(props.budget[0]['amount']));  //trying to get setSumMonth in dashboard to update without refreshing, not completed!!! won't work since it is an array
     }
 
     function handleChange(event){

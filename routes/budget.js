@@ -12,7 +12,7 @@ const db = require("../model/helper")
     });
   
 
-  //get all budget data from 1 user
+  //get all budget data from 1 user 
   router.get("/:id", async function (req, res) {
     let id = req.params.id;
     
@@ -49,23 +49,23 @@ router.get("/:id/sum", async function (req, res) {
   }
   });
 
-//POST add new budget amount  
-router.post("/", async function(req, res) {
-    let { categoryid, amount, userid } = req.body;
+//POST add new budget amount  (not used, started db with user 1 budget set)
+// router.post("/", async function(req, res) {
+//     let { categoryid, amount, userid } = req.body;
   
-    let sql = `
-      INSERT INTO budget (categoryid, categoryName amount, userid)
-      VALUES (${categoryid}, ${amount}, ${userid});
-      `;
+//     let sql = `
+//       INSERT INTO budget (categoryid, categoryName amount, userid)
+//       VALUES (${categoryid}, ${amount}, ${userid});
+//       `;
   
-    try {
-      await db(sql); //INSERT new budget
-      let result = await db(`SELECT * FROM budget`); //select and return updated student list
-      res.status(201).send(result.data);
-    } catch (err) {
-      res.status(500).send({ error: err.message });
-    }
-  });
+//     try {
+//       await db(sql); //INSERT new budget
+//       let result = await db(`SELECT * FROM budget`); //select and return updated student list
+//       res.status(201).send(result.data);
+//     } catch (err) {
+//       res.status(500).send({ error: err.message });
+//     }
+//   });
 
 
 

@@ -14,8 +14,7 @@ function RecordExpense(props){
     function handleSubmit(event){
         event.preventDefault();
         props.addExpenseCb(formData);
-        props.setSumMonthExpenses(props.sumMonthExpenses + +formData.amount);
-        // console.log(props.sumMonthExpenses)
+        props.setSumMonthExpenses(props.sumMonthExpenses + +formData.amount);  //update setSumMonth in dashboard to update without refreshing & set to number
         setFormData(BLANK_FORM);
     }
 
@@ -74,7 +73,6 @@ function RecordExpense(props){
                 onChange={handleChange}
                 >
                 <option defaultValue="Select"> Select</option>
-                {/* <option selected value="Select"> Select</option> */}
                 <option value="1"> Rent & Utilities</option>
                 <option value="2"> Food</option>
                 <option value="3"> Personal</option>
@@ -118,9 +116,6 @@ function RecordExpense(props){
     
     <div> {props.expenses.map(e => (
         <li key={e.expensesid} >
-
-            {/* {props.category.map(c => (
-                <li key ={c.categoryid} > */}
             
 
         <table className ="list">
@@ -130,8 +125,6 @@ function RecordExpense(props){
 
                         <td>{`$ ${e.amount}`} </td>
                        
-                        {/* <td>{c.categoryName}</td>  */}
-
                         <td>{e.categoryid}</td>
                         
                         <td>{e.themonth}</td> 
