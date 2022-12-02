@@ -49,25 +49,6 @@ router.get("/:id/sum", async function (req, res) {
   }
   });
 
-//POST add new budget amount  (not used, started db with user 1 budget set)
-// router.post("/", async function(req, res) {
-//     let { categoryid, amount, userid } = req.body;
-  
-//     let sql = `
-//       INSERT INTO budget (categoryid, categoryName amount, userid)
-//       VALUES (${categoryid}, ${amount}, ${userid});
-//       `;
-  
-//     try {
-//       await db(sql); //INSERT new budget
-//       let result = await db(`SELECT * FROM budget`); //select and return updated student list
-//       res.status(201).send(result.data);
-//     } catch (err) {
-//       res.status(500).send({ error: err.message });
-//     }
-//   });
-
-
 
   //PUT new budget
   router.put("/:userid", async function(req, res) {

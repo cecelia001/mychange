@@ -45,12 +45,25 @@ function RecordExpense(props){
 
             <label>
                 Month
-                <input
-                type="text"
-                name="themonth"
-                value={formData.themonth}
-                onChange={handleChange}
-                />
+                <select
+                    name="themonth"
+                    value={formData.themonth}
+                    onChange={handleChange}
+                >
+                    <option defaultValue="Select"> Select</option>
+                    <option value="January">January</option>
+                    <option value="February">February</option>
+                    <option value="March">March</option>
+                    <option value="April">April</option>
+                    <option value="May">May</option>
+                    <option value="June">June</option>
+                    <option value="July">July</option>
+                    <option value="August">August</option>
+                    <option value="September">September</option>
+                    <option value="October">October</option>
+                    <option value="November">November</option>
+                    <option value="December">December</option>
+                </select>
             </label>
 
             <label>
@@ -125,7 +138,7 @@ function RecordExpense(props){
 
                         <td>{`$ ${e.amount}`} </td>
                        
-                        <td>{e.categoryid}</td>
+                        <td>{e.categoryName}</td>
                         
                         <td>{e.themonth}</td> 
                        

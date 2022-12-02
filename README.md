@@ -24,7 +24,7 @@
   DB_HOST=localhost
   DB_USER=root
   DB_NAME=budget
-  DB_PASS=root
+  DB_PASS=YOURPASSWORD
 ```
 
 - Run `npm run migrate` in the project folder of this repository, in a new terminal window. This will create the tables used in this database.
