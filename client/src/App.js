@@ -12,38 +12,22 @@ import Error404View from './views/Error404View';
 
 
 function App() {
-
   let [budget, setBudget] = useState([]);
   let [expenses, setExpenses] = useState([]);
   let [sumMonthExpenses, setSumMonthExpenses] = useState(); //dashboard & Expenses View
   let [sumBudget, setSumBudget] = useState();     //dashboard
 
   useEffect(() => {
-    // getUsers();
-    getExpenses();
     getBudget();
+    getExpenses();
     getBudgetTotal();
     getMonthExpensesTotal();
   }, []);
 
-  // async function getUsers() (not needed because only 1 user at the moment) {
-  //   try {
-  //     let response = await fetch("/users"); //GET
-  //     if (response.ok) {
-  //       let users = await response.json();
-  //       setUsers(users);
-  //     } else {
-  //       console.log(`Server error: ${response.status} ${response.statusText}`);
-  //     }
-  //   } catch (err) {
-  //     console.log(`Network error: ${err.message}`);
-  //   }
-  // } 
-
-//GET Budget obj from user 1 (AddBudget.js)
+//GET Budget obj (AddBudget.js)
   async function getBudget() {
     try {
-      let response = await fetch("budget/1");
+      let response = await fetch("budget/");
       if (response.ok) {
         let data = await response.json();
         setBudget(data);
@@ -56,27 +40,49 @@ function App() {
   } 
   
 
-  //PUT reset budget (AddBudget.js)
-  async function newBudget(amount){
-  
-  let options= {
-  method: "PUT",
-  headers: { "Content-Type": "application/json" },
-  body: JSON.stringify(amount)
-};
+//POST new budget amount
 
-try {
-  let response = await fetch("/budget/1", options); 
-  if (response.ok) {
-    let data = await response.json();    
-    setBudget(data);
-  } else {
-    console.log(`Server error: ${response.status} ${response.statusText}`);
-  }
-} catch (err) {
-  console.log(`Network error: ${err.message}`);
-}
-}
+  async function addBudget(amount){
+    let options= {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(amount)
+      };
+  
+      try {
+      let response = await fetch("/budget", options); // do POST
+      if (response.ok) {
+        let data = await response.json();    //awaiting new data, if found post
+        setBudget(data);
+      } else {
+        console.log(`Server error: ${response.status} ${response.statusText}`);
+      }
+      } catch (err) {
+      console.log(`Network error: ${err.message}`);
+      }
+    }
+
+  //PUT reset budget (AddBudget.js)
+//   async function newBudget(amount){
+  
+//   let options= {
+//   method: "PUT",
+//   headers: { "Content-Type": "application/json" },
+//   body: JSON.stringify(amount)
+// };
+
+// try {
+//   let response = await fetch("/budget/1", options); 
+//   if (response.ok) {
+//     let data = await response.json();    
+//     setBudget(data);
+//   } else {
+//     console.log(`Server error: ${response.status} ${response.statusText}`);
+//   }
+// } catch (err) {
+//   console.log(`Network error: ${err.message}`);
+// }
+// }
 
 
   //POST new expense (RecordExpense.js)
