@@ -4,12 +4,22 @@ var router = express.Router();
 const db = require("../model/helper")
 
 //get budget data
-  router.get("/", function (req, res) {
-    db ("SELECT * FROM budget;")
-    .then(results => {
-    res.send(results.data);
-    })
-    .catch(err=> res.status(500).send(err));
+  router.get("/", async function (req, res) {
+    let sql= `
+      SELECT budget.*, category.*
+      FROM budget
+      LEFT JOIN category ON budget.categoryid = category.categoryid;`
+  try {
+    let result = await db(sql);
+  
+      if (result.data.length === 0) {
+      res.status(404).send({error: "Error"});
+      } else {
+      res.send(result.data);
+      }
+    } catch(err) {
+    res.status(500).send({error: err.message});
+    }
     });
   
 

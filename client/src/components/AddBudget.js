@@ -4,7 +4,7 @@ import "./AddBudget.css";
 
 function AddBudget(props){
 
-    const [formData, setFormData] = useState({}); 
+    const [formData, setFormData] = useState([]); 
     const [showConfirm, setShowConfirm] = useState(false)
 
 
@@ -14,11 +14,13 @@ async function addBudget(amount){
     let options= {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(amount)
+      body: JSON.stringify({
+        categoryid: formData.Rent,
+      })
       };
   
       try {
-      let response = await fetch("/budget", options); // do POST
+      let response = await fetch("/budget", options); 
       if (response.ok) {
         let data = await response.json();    //awaiting new data, if found post
         props.setBudget(data);
@@ -29,6 +31,7 @@ async function addBudget(amount){
       console.log(`Network error: ${err.message}`);
       }
     }
+    
 
     function handleSubmit(event){
         event.preventDefault();
@@ -184,3 +187,42 @@ async function addBudget(amount){
 }
 
 export default AddBudget;
+
+
+// const [formData, setFormData] = useState(toNewFormat(props.budget)); 
+// const [showConfirm, setShowConfirm] = useState(false)
+
+
+
+// // Create and return an obj of format category: amount
+// function toNewFormat() {
+//     let newFormat = {};
+//     for (let bItem of props.budget) {
+//         newFormat[bItem.categoryName] = bItem.amount;
+//     }
+
+//     return newFormat;
+// }
+
+
+// // Return budget data back to original format for submitting
+// function toOldFormat() {
+//     let oldFormat = [];
+//     for (let bItem of props.budget) {
+//         let bItemCopy = {...bItem};
+//         bItemCopy.amount = Number(formData[bItem.categoryName]);
+//         oldFormat.push(bItemCopy);
+//     }
+
+//     return oldFormat;
+// }
+
+// function handleSubmit(event){
+//     event.preventDefault();
+//     let oldFormat = toOldFormat();  
+//    // console.log('submit', oldFormat);
+//     props.newBudgetCb(oldFormat);
+//     setShowConfirm(true);
+//     setFormData(props.budget);
+//     // props.setSumBudget(toOldFormat(props.budget[0]['amount']));  //trying to get setSumMonth in dashboard to update without refreshing, not completed!!! won't work since it is an array
+// }

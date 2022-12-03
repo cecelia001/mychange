@@ -12,7 +12,7 @@ const db = require("../model/helper")
     let result = await db(sql);
   
       if (result.data.length === 0) {
-      res.status(404).send({error: "User does not exist"});
+      res.status(404).send({error: "Error"});
       } else {
       res.send(result.data);
       }
