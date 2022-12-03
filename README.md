@@ -1,22 +1,17 @@
 # myChange
 
-### DatabaseSchema
-![](Database%20Schema.png)
-
-
-### User flow diagram
-![](FlowMapp.png)
-
+## About
+This app allows for users to track monthly expenses and set individualized budgets for a variety of categories.
 
 ## Setup
+
 ### Dependencies
 
 - Run `npm install` in project directory. This will install server-related dependencies such as `express`.
-- `cd client` and run `npm install`. This will install client dependencies (React).
+- `cd client` and run `npm install`. This will install client dependencies.
 
 ### Database Prep
-
-- Access the MySQL interface in your terminal by running `mysql -u root -p`
+- Access the MySQL interface in your terminal
 - Create a new database called budget: `create database budget`
 - Add a `.env` file to the project folder of this repository containing the MySQL authentication information for MySQL user. For example:
 
@@ -34,12 +29,18 @@
 - Run `npm start` in project directory to start the Express server.
 - In another terminal, do `cd client` and run `npm start` to start the client. 
 
-### Possible Future Extensions
+## DatabaseSchema
+![](Database%20Schema.png)
 
+
+## User flow diagram
+![](FlowMapp.png)
+
+
+## Possible Future Extensions
 - Login page for multiple users
 - Tracking individual expenses for each category, with category totals
 - User can add their own category
-- Compare month to month
 - Goals page, saving up for a future trip or to buy a house, etc.
 
 
