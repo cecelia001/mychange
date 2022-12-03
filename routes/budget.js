@@ -40,17 +40,24 @@ router.get("/sum", async function (req, res) {
 
 //POST new budget
 router.post("/", async function (req, res){
-  let { categoryid, amount } = req.body;
+  let budgetArr = req.body;
 
-  let sql = `
-    INSERT INTO budget (categoryid, amount)
-    VALUES ( ${categoryid}, ${amount} ); 
-    `;
 try{
-  await db(sql);
   let result = await db (`SELECT * FROM budget`)
-  res.status(201).send(result.data)
-;} catch(err) {
+  if (result.data.length === 0){
+    res.status(404).send({error: "Error"});
+  } else {
+    for (let c of budgetArr){
+      let sql = `
+        INSERT INTO budget (categoryid, amount)
+        VALUES ( ${c.categoryid}, ${c.amount} ); 
+        `
+      await db(sql);
+    }
+      result = await db(`SELECT * FROM budget`)
+      res.send(result.data);
+    }
+} catch(err) {
   res.status(500).send({error: err.message});
 }
 });

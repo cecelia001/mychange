@@ -14,9 +14,7 @@ async function addBudget(amount){
     let options= {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        categoryid: formData.Rent,
-      })
+      body: JSON.stringify(amount)
       };
   
       try {
