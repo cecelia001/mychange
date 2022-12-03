@@ -4,46 +4,39 @@ import "./AddBudget.css";
 
 function AddBudget(props){
 
-    const [formData, setFormData] = useState(toNewFormat(props.budget)); 
+    const [formData, setFormData] = useState({}); 
     const [showConfirm, setShowConfirm] = useState(false)
 
 
- 
-    // Create and return an obj of format category: amount
-    function toNewFormat() {
-        let newFormat = {};
-        for (let bItem of props.budget) {
-            newFormat[bItem.categoryName] = bItem.amount;
-        }
+//POST new budget amount
 
-        return newFormat;
-    }
-
-    
-    // Return budget data back to original format for submitting
-    function toOldFormat() {
-        let oldFormat = [];
-        for (let bItem of props.budget) {
-            let bItemCopy = {...bItem};
-            bItemCopy.amount = Number(formData[bItem.categoryName]);
-            oldFormat.push(bItemCopy);
-        }
-
-        return oldFormat;
+async function addBudget(amount){
+    let options= {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(amount)
+      };
+  
+      try {
+      let response = await fetch("/budget", options); // do POST
+      if (response.ok) {
+        let data = await response.json();    //awaiting new data, if found post
+        props.setBudget(data);
+      } else {
+        console.log(`Server error: ${response.status} ${response.statusText}`);
+      }
+      } catch (err) {
+      console.log(`Network error: ${err.message}`);
+      }
     }
 
     function handleSubmit(event){
         event.preventDefault();
-        let oldFormat = toOldFormat();  
-       // console.log('submit', oldFormat);
-        props.newBudgetCb(oldFormat);
         setShowConfirm(true);
-        setFormData(props.budget);
-        // props.setSumBudget(toOldFormat(props.budget[0]['amount']));  //trying to get setSumMonth in dashboard to update without refreshing, not completed!!! won't work since it is an array
+        addBudget(formData);
     }
 
     function handleChange(event){
-        // event.preventDefault();
         let { name, value } = event.target;
         setFormData (data => ({...data, [name]: value}));
     }
@@ -76,8 +69,8 @@ function AddBudget(props){
                     Rent & Utilities
                     <input
                     type= "number"
-                    name ="rentandutilities"
-                    value={formData.rentandutilities}   
+                    name ="Rent"
+                    value={formData.Rent}   
                     onChange={handleChange}
                     />
                 </label>
@@ -90,8 +83,8 @@ function AddBudget(props){
                     {" "}
                     <input
                     type= "number"
-                    name="food"
-                    value={formData.food}
+                    name="Food"
+                    value={formData.Food}
                     onChange={handleChange}
                     />
                 
@@ -104,8 +97,8 @@ function AddBudget(props){
                     {" "}
                     <input
                     type= "number"
-                    name="personal"
-                    value={formData.personal}
+                    name="Personal"
+                    value={formData.Personal}
                     onChange={handleChange}
                     />
                 
@@ -118,8 +111,8 @@ function AddBudget(props){
                     {" "}
                     <input
                     type= "number"
-                    name="transportation"
-                    value={formData.transportation}
+                    name="Transportation"
+                    value={formData.Transportation}
                     onChange={handleChange}
                     />
 
@@ -132,8 +125,8 @@ function AddBudget(props){
                     {" "}
                     <input
                     type= "number"
-                    name="other"
-                    value={formData.other}
+                    name="Other"
+                    value={formData.Other}
                     onChange={handleChange}
                     />
 
@@ -146,8 +139,8 @@ function AddBudget(props){
                     {" "}
                     <input
                     type= "number"
-                    name="savings"
-                    value={formData.savings}
+                    name="Savings"
+                    value={formData.Savings}
                     onChange={handleChange}
                     />
 
@@ -160,8 +153,8 @@ function AddBudget(props){
                     {" "}
                     <input
                     type= "number"
-                    name="emergency"
-                    value={formData.emergency}
+                    name="Emergency"
+                    value={formData.Emergency}
                     onChange={handleChange}
                     />
                 </label>
