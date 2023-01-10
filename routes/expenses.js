@@ -21,37 +21,15 @@ const db = require("../model/helper")
     }
     });
 
- //get all expenses data from 1 user
- router.get("/:id", async function (req, res) {
-  let id = req.params.id;
-  let sql = `
-    SELECT expenses.*, category.*
-    FROM expenses
-    LEFT JOIN category ON expenses.categoryid = category.categoryid
-    WHERE expenses.userid = ${id};`;
-  try {
-  let result = await db(sql);
-
-    if (result.data.length === 0) {
-    res.status(404).send({error: "User does not exist"});
-    } else {
-    res.send(result.data);
-    }
-  } catch(err) {
-  res.status(500).send({error: err.message});
-  }
-  });
-
 
 //calculate the sum of expenses from 1 user in 1 month //dashboard
-router.get("/:id/sum/:month/", async function (req, res) {
-  let id = req.params.id;
+router.get("/sum/:month/", async function (req, res) {
   let month = req.params.month;
   let sql = `
       SELECT expenses.*, category.*
       FROM expenses
       LEFT JOIN category ON expenses.categoryid = category.categoryid
-      WHERE expenses.userid = ${id} and themonth="${month}";`
+      WHERE themonth="${month}";`
   try {
   let result = await db(sql);
 
@@ -71,8 +49,8 @@ router.post("/", async function(req, res) {
   let { categoryid, amount, themonth, theyear } = req.body;
 
   let sql = `
-    INSERT INTO expenses (categoryid, amount, themonth, theyear, userid)
-    VALUES (${categoryid}, ${amount}, '${themonth}', ${theyear}, 1);
+    INSERT INTO expenses (categoryid, amount, themonth, theyear)
+    VALUES (${categoryid}, ${amount}, '${themonth}', ${theyear});
     `;
 
   try {

@@ -13,32 +13,29 @@ const db = require("../model/helper")
   
 
   //get all budget data from 1 user 
-  router.get("/:id", async function (req, res) {
-    let id = req.params.id;
-    
-    try {
-    let result = await db(`
-        SELECT category.*, budget.amount, budget.userid
-        FROM category
-        LEFT JOIN budget ON category.categoryid = budget.categoryid
-        WHERE budget.userid = ${id};`);
+  // router.get("/", async function (req, res) {
+  //   try {
+  //   let result = await db(`
+  //       SELECT category.*, budget.amount, budget.userid
+  //       FROM category
+  //       LEFT JOIN budget ON category.categoryid = budget.categoryid;
+  //       `);
   
-      if (result.data.length === 0) {
-      res.status(404).send({error: "User does not exist"});
-      } else {
-      res.send(result.data);
-      }
-    } catch(err) {
-    res.status(500).send({error: err.message});
-    }
-    });
+  //     if (result.data.length === 0) {
+  //     res.status(404).send({error: "User does not exist"});
+  //     } else {
+  //     res.send(result.data);
+  //     }
+  //   } catch(err) {
+  //   res.status(500).send({error: err.message});
+  //   }
+  //   });
 
 //sum of all budgets for dashboard  
-router.get("/:id/sum", async function (req, res) {
-  let id = req.params.id;
+router.get("/sum", async function (req, res) {
   
   try {
-  let result = await db(`SELECT SUM(amount) FROM budget WHERE userid=${id};`);
+  let result = await db(`SELECT SUM(amount) FROM budget`);
     if (result.data.length === 0) {
     res.status(404).send({error: "User does not exist"});
     } else {
@@ -51,13 +48,12 @@ router.get("/:id/sum", async function (req, res) {
 
 
   //PUT new budget
-  router.put("/:userid", async function(req, res) {
+  router.put("/", async function(req, res) {
     let budgetArr = req.body;
-    let userid = req.params.userid
     // let { categoryid, amount, userid } = req.body;
 
       try {
-        let result = await db(`SELECT * FROM budget WHERE userid = 1`); 
+        let result = await db(`SELECT * FROM budget`); 
         if (result.data.length === 0) {
           res.status(404).send({ error: "User not found" });
         } else {
@@ -65,11 +61,11 @@ router.get("/:id/sum", async function (req, res) {
             let sql = `
               UPDATE budget
               SET amount = ${c.amount}
-              WHERE userid= ${c.userid} AND categoryid=${c.categoryid};        
+              WHERE categoryid=${c.categoryid};        
             `
           await db(sql); 
           }
-          result = await db(`SELECT * FROM budget WHERE userid = ${userid}`);
+          result = await db(`SELECT * FROM budget`);
           res.send(result.data);
           
         }

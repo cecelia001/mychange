@@ -40,10 +40,10 @@ function App() {
   //   }
   // } 
 
-//GET Budget obj from user 1 (AddBudget.js)
+//GET Budget obj (AddBudget.js)
   async function getBudget() {
     try {
-      let response = await fetch("budget/1");
+      let response = await fetch("/budget");
       if (response.ok) {
         let data = await response.json();
         setBudget(data);
@@ -66,7 +66,7 @@ function App() {
 };
 
 try {
-  let response = await fetch("/budget/1", options); 
+  let response = await fetch("/budget", options); 
   if (response.ok) {
     let data = await response.json();    
     setBudget(data);
@@ -100,10 +100,10 @@ try {
     }
   }
 
-//get all expenses from User 1 (RecordExpense.js)
+//get all expenses (RecordExpense.js)
   async function getExpenses() {
     try {
-      let response = await fetch("/expenses/1"); //GET
+      let response = await fetch("/expenses"); //GET
       if (response.ok) {
         let data = await response.json();
         setExpenses(data);
@@ -118,7 +118,7 @@ try {
   //monthly budget (UserDashboard.js)
   async function getBudgetTotal() {
     try {
-      let response = await fetch("/budget/1/sum"); //does GET by default
+      let response = await fetch("/budget/sum"); //does GET by default
       if (response.ok) {
         let data = await response.json();
         setSumBudget(data["SUM(amount)"]);
@@ -133,12 +133,10 @@ try {
     //monthly expenseTotal (UserDashboard.js)
   async function getMonthExpensesTotal() {
     try {
-      let response = await fetch("/expenses/1/sum/October"); 
-      // console.log(response);
+      let response = await fetch("/expenses/sum/September"); 
       if (response.ok) {
         let data = await response.json();
-        setSumMonthExpenses(data["SUM(amount)"]);
-        // console.log(data["SUM(amount)"]);
+        setSumMonthExpenses(data["amount"]);
       } else {
         console.log(`Server error: ${response.status} ${response.statusText}`);
       }
