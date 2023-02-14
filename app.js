@@ -15,6 +15,10 @@ var app = express();
 app.use(cors());
 app.use(logger('dev'));
 app.use(express.json());
+
+//Location of static assets
+app.use(express.static(path.join(__dirname, "/client/build")));
+
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
@@ -24,5 +28,10 @@ app.use('/', indexRouter);
 app.use('/budget', budgetRouter);
 app.use('/expenses', expensesRouter);
 // app.use('/category', categoryRouter);
+
+//Respond with index.html for unmatched routes
+app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname + "/client/build/index.html"));
+});
 
 module.exports = app;

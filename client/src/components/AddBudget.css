@@ -1,16 +1,19 @@
+* {
+  box-sizing: border-box;
+}
+
 li {
     list-style: none;
+    margin: auto;
 }
 
 label{
     display: inline-block;
     text-align: right;
-    width: 300px;
+    /* width: 300px; */
     padding: 10px;
     gap: 15px;
 }
-
-
 
 .BudgetView h2 {
   font-family: 'Avantgarde, TeX Gyre Adventor, URW Gothic L', sans-serif;
@@ -19,7 +22,11 @@ label{
   text-align: center;
 } 
 
-
+.AddBudget {
+  background-color: #f2f2f2;
+  border-radius: 15px;
+  padding: 2%;
+}
 
  .BudgetView h3 {
   color: #c0be42; 
@@ -42,28 +49,20 @@ label{
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
-  display: inline;
+  display: block;
   border: 1px solid #ccc;
   border-radius: 10px;
   box-sizing: border-box;
   width: 125px;
-  height: px; 
+  height: 1.5em; 
 }
 
-.backgroundColor {
-  background-color: #f2f2f2;
-  border-radius: 15px;
-  
-
-
-}
 .BudgetView .column {
     width: 30%;
     margin: auto;
   }
-  
+
 .column img {
-    /* float: left; */
     width: 575px;
     height: 575px;
     border-radius: 1000px;
@@ -73,4 +72,3 @@ label{
   margin-right: -150px;
   background-color: #5067e7;
 }
-
