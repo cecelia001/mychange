@@ -30,16 +30,16 @@ CREATE TABLE expenses (
     theyear INT
 ); 
 INSERT INTO expenses (categoryid, amount, themonth, theyear)  
-    VALUES (1, 1000, 'September', 2022), 
-           (2, 600, 'September', 2022),
-           (3, 100, 'September', 2022),
-           (4, 50, 'September', 2022),
-           (5, 60, 'September', 2022),
-           (6, 100, 'September', 2022),
-           (7, 50, 'September', 2022),
-           (1, 1550, 'October', 2022),
-           (2, 550, 'October', 2022),
-           (4, 50, 'October', 2022),
-           (5, 60, 'October', 2022),
-           (6, 100, 'October', 2022),
-           (7, 50, 'October', 2022);
+    VALUES (1, 1000, 'January', 2023), 
+           (2, 600, 'January', 2023),
+           (3, 100, 'January', 2023),
+           (4, 50, 'January', 2023),
+           (5, 60, 'January', 2023),
+           (6, 100, 'January', 2023),
+           (7, 50, 'January', 2023),
+           (1, 1550, 'February', 2023),
+           (2, 550, 'February', 2023),
+           (4, 50, 'February', 2023),
+           (5, 60, 'February', 2023),
+           (6, 100, 'February', 2023),
+           (7, 50, 'February', 2023);
