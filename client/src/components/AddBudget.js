@@ -35,7 +35,7 @@ function AddBudget(props){
     function handleSubmit(event){
         event.preventDefault();
         let oldFormat = toOldFormat();  
-      //console.log('submit', oldFormat);
+        console.log('submit', oldFormat);
         props.newBudgetCb(oldFormat);
         setShowConfirm(true);
         setFormData(props.budget);

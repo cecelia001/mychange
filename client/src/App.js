@@ -130,16 +130,11 @@ try {
     }
   }
 
-  const month = ["January","February","March","April","May","June","July","August","September","October","November","December"];
-
-  const d = new Date();
-  let monthName = month[d.getMonth()];
-  console.log(monthName);
 
     //monthly expenseTotal (UserDashboard.js)
   async function getMonthExpensesTotal() {
     try {
-      let response = await fetch(`/expenses/sum/${monthName}`); 
+      let response = await fetch(`/expenses/sum/`); 
       if (response.ok) {
         let data = await response.json();
         setSumMonthExpenses(data["amount"]);

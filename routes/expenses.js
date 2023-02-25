@@ -39,7 +39,7 @@ router.get("/sum/", async function (req, res) {
   let result = await db(sql);
 
     if (result.data.length === 0) {
-    res.status(404).send({error: "Does not exist"});
+    res.status(404).send({error: "Month does not exist"});
     } else {
     res.send(result.data[0]);
     }
