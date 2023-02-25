@@ -7,7 +7,6 @@ function AddBudget(props){
     const [formData, setFormData] = useState(toNewFormat(props.budget)); 
     const [showConfirm, setShowConfirm] = useState(false)
 
-
  
     // Create and return an obj of format category: amount
     function toNewFormat() {
@@ -24,18 +23,19 @@ function AddBudget(props){
     function toOldFormat() {
         let oldFormat = [];
         for (let bItem of props.budget) {
+            console.log(bItem)
             let bItemCopy = {...bItem};
             bItemCopy.amount = Number(formData[bItem.categoryName]);
             oldFormat.push(bItemCopy);
         }
-
+        console.log(oldFormat);
         return oldFormat;
     }
 
     function handleSubmit(event){
         event.preventDefault();
         let oldFormat = toOldFormat();  
-       // console.log('submit', oldFormat);
+      //console.log('submit', oldFormat);
         props.newBudgetCb(oldFormat);
         setShowConfirm(true);
         setFormData(props.budget);
