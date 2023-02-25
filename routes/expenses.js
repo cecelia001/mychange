@@ -23,18 +23,23 @@ const db = require("../model/helper")
 
 
 //calculate the sum of expenses from 1 user in 1 month //dashboard
-router.get("/sum/:month/", async function (req, res) {
-  let month = req.params.month;
+router.get("/sum/", async function (req, res) {
+
+  const month = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+
+  const d = new Date();
+  let monthName = month[d.getMonth()];
+
   let sql = `
       SELECT expenses.*, category.*
       FROM expenses
       LEFT JOIN category ON expenses.categoryid = category.categoryid
-      WHERE themonth="${month}";`
+      WHERE themonth="${monthName}";`
   try {
   let result = await db(sql);
 
     if (result.data.length === 0) {
-    res.status(404).send({error: "User does not exist"});
+    res.status(404).send({error: "Does not exist"});
     } else {
     res.send(result.data[0]);
     }

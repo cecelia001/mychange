@@ -134,6 +134,7 @@ try {
 
   const d = new Date();
   let monthName = month[d.getMonth()];
+  console.log(monthName);
 
     //monthly expenseTotal (UserDashboard.js)
   async function getMonthExpensesTotal() {
