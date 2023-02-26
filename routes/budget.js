@@ -50,7 +50,6 @@ router.get("/sum", async function (req, res) {
   //PUT new budget
   router.put("/", async function(req, res) {
     let budgetArr = req.body;
-    // let { categoryid, amount, userid } = req.body;
 
       try {
         let result = await db(`SELECT * FROM budget`); 

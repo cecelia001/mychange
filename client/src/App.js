@@ -147,13 +147,10 @@ try {
   }
 
 
-
   return (
     <div className="App">
       <h1> my₵hange </h1>
-      {/* <img src="https://www.pngkey.com/png/detail/334-3345806_this-is-a-picture-of-a-dollar-sign.png" alt="This Is A Picture Of A Dollar Sign Symbol Surrounded - Money Logo Transparent@pngkey.com" /> */}
       <Navbar />
-      
             <Routes>
                 <Route path="/" element={<HomeView expenses={expenses} sumBudget={sumBudget} sumMonthExpenses ={sumMonthExpenses}/>} />
                 <Route path="/budget" element={<BudgetView newBudgetCb={newBudget} budget={budget} setSumBudget={setSumBudget} sumBudget={sumBudget}/>} />

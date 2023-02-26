@@ -14,7 +14,6 @@ function AddBudget(props){
         for (let bItem of props.budget) {
             newFormat[bItem.categoryName] = bItem.amount;
         }
-
         return newFormat;
     }
 
@@ -23,19 +22,16 @@ function AddBudget(props){
     function toOldFormat() {
         let oldFormat = [];
         for (let bItem of props.budget) {
-            console.log(bItem)
             let bItemCopy = {...bItem};
             bItemCopy.amount = Number(formData[bItem.categoryName]);
             oldFormat.push(bItemCopy);
         }
-        console.log(oldFormat);
         return oldFormat;
     }
 
     function handleSubmit(event){
         event.preventDefault();
         let oldFormat = toOldFormat();  
-        console.log('submit', oldFormat);
         props.newBudgetCb(oldFormat);
         setShowConfirm(true);
         setFormData(props.budget);
@@ -45,7 +41,7 @@ function AddBudget(props){
     function handleChange(event){
         // event.preventDefault();
         let { name, value } = event.target;
-        setFormData (data => ({...data, [name]: value}));
+        setFormData(data => ({...data, [name]: value}));
     }
 
 
