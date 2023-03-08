@@ -155,7 +155,7 @@ try {
                 <Route path="/" element={<HomeView expenses={expenses} sumBudget={sumBudget} sumMonthExpenses ={sumMonthExpenses}/>} />
                 <Route path="/budget" element={<BudgetView newBudgetCb={newBudget} budget={budget} setSumBudget={setSumBudget} sumBudget={sumBudget}/>} />
                 <Route path="/expenses" element={<ExpensesView addExpenseCb= {addExpense}  expenses={expenses} setSumMonthExpenses ={setSumMonthExpenses} sumMonthExpenses={sumMonthExpenses}/>} />
-                <Route path="*" element={<Error404View />} />
+                <Route path="*" element={<Error404View />}  />
             </Routes>
   
   
