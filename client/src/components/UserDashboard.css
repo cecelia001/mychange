@@ -4,16 +4,20 @@
   
 
   .dashboard{
-    height: 300px;
-    background-image:url("https://www.zambianguardian.com/wp-content/uploads/2021/12/budget.jpg");
+    height: 1500px;
+    background-image:url("https://images.unsplash.com/photo-1579621970588-a35d0e7ab9b6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80");
     background-repeat: no-repeat;
     background-size: cover;
-    padding-top: 300px;
+    padding-top: 400px;
     padding-bottom: 200px;
     background-attachment: fixed;
 
   }
   
+  .box{
+    float: right;
+    margin-right: 600px;
+  }
   
   a{
     color: rgb(179, 158, 158);
